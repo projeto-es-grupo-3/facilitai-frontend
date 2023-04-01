@@ -26,7 +26,22 @@ npm run build
 # iniciar a aplicação
 npm run start
 ```
-## 4. Referências
+
+## 4. Padrões de commit
+
+* feat: Uma nova feature no código.
+* fix: Corrigindo um bug.
+* docs: Adicionando documentação.
+* refactor: Alterando o código sem adicionar feature ou ser um bug fix. (eg: mudar .gitignore ou alterar o código para uma padrão melhor).
+* test: aAdicionando teste novo ou fazendo mudanças em um teste.
+
+Um exemplo de commit:
+
+```
+DOCS: nome do commit
+```
+
+## 5. Referências
 
 * https://react.dev/
 * https://nextjs.org/learn/foundations/about-nextjs
