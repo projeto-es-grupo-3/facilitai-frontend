@@ -1,0 +1,22 @@
+.polygon {
+    /* 
+    width: 90%;
+     transform: rotate(14deg);
+    background: #F7F7F7; */
+    /* height: 800px;    */
+    top: 200px;
+    background-image: url('../../../public/images/polygon.svg');
+}
+/* 
+.polygon {
+    position: relative;
+    top: -300px;
+    width: "auto";
+    height: 500px;
+    background: #F7F7F7;
+    border-style: solid;
+    border-width: 8em 0 0 8em;
+    border-color: transparent transparent transparent rgb(151, 235, 158);
+    overflow: hidden;
+} */
+
