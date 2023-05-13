@@ -1,42 +1,10 @@
-.header {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0;
-    width: auto;
-    height: 400px;
-}
-
-.logo {
-    width: auto;
-    flex: 1;
-    max-height: 200px;
-
-}
-.menu {
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    flex: 2;
-    max-height: 200px;
-}
-.menu ul {
-    display: flex;
+.customNavBar ul {
     list-style-type: none;
 }
-.menu ul li  {
-    line-height: 40px;
-    margin-top: 30px;
-    margin-left: 40px;
-    font-style: normal;
-    font-family: Roboto;
-    font-weight: 700;
-    font-size: 25px;
-}
 
-.menu ul li a:visited, .menu ul li a:hover, .menu ul li a:link {
+.customNavItem a:visited, .customNavItem a:hover, .customNavItem a:link {
     text-decoration: none;
     text-transform: none;
     color: #2E1F74;
 }
+

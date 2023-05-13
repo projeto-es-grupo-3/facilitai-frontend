@@ -1,35 +1,24 @@
 .form {
-    margin: auto;
-    min-height: 300px;
-    min-width: 400px;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #2E1F74;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
+    height: 600px;
+    width: 500px;
 }
+
 .form h3 {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 43px;
-    text-align: center;
+    width: 70%;
     color: #FFFFFF;
 }
 
 .form a {
-  color:#30ABED;
-  margin-bottom: 5px;
-  font-size: 10px;
+    color:#30ABED;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .inputField {
-    width: 70%;
+    align-items: center;
+    width: 80%;
     position: relative;
-    margin-top: 40px;
     margin: 30px 0;
 }
 .inputField label {
@@ -38,24 +27,55 @@
     left: 0;
     bottom: 5px;
     color: #FFFFFF;
-    cursor:text;
-
+    cursor: text;
+    transition: 0.5s ease-in-out ;
 }
 .inputField input {
     width: 100%;
+    color: #FFFFFF;
     padding: 5px;
     border: 0;
-    color: #2E1F74;
     background-color: #2E1F74;
-    border-bottom:2px solid #FFFFFF;
+    border-bottom: 0.240366px solid #FFFFFF;
     outline: 0;
 }
 
+.inputField i {
+    position: absolute;
+    right: 0;
+}
+
+.inputField input:focus {
+    border-bottom: 0.240366px solid #30ABED;
+}
+
+.inputField input:focus ~ label, .inputField input:valid ~ label {
+    transform: translateY(-24px);
+    font-size: 12px;
+}
+
 .button {
-    width: 70%;
+    width: 80%;
+    text-transform: uppercase;
     height: 50px;
     background-color: #30ABED;
     color: #FFFFFF;
     border: 0;
     border-radius: 10px;
 }
+
+@media screen and (max-width : 576px) {
+    .form {
+        height: 400px;
+        width: 300px;
+    }
+    .form h3 {
+        font-size: 23px !important;
+    }
+    .form a {
+        color:#30ABED;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 10px;
+    }
+ }
