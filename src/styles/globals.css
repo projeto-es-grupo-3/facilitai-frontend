@@ -1,0 +1,45 @@
+body {
+  overflow-x: hidden;
+}
+.text-custom1 {
+  color: #2E1F74 !important;
+}
+.bg-custom1 {
+  background-color: #2E1F74 !important;
+}
+.text-custom2 {
+  color: #B3B3B3 !important;
+}
+.bg-custom2 {
+  background-color: #B3B3B3 !important;
+}
+.text-custom3 {
+  color: #F7F7F7 !important;
+}
+.bg-custom3 {
+  background-color: #F7F7F7 !important;
+}
+header {
+  background: rgba(255, 255, 255, 0);
+}
+main {
+  margin-top: 100px;
+}
+.gifSection {
+  width: 80%;
+  height: 80%;
+}
+
+@media screen and (max-width : 992px ) {
+  .gifSection {
+      width: 60%;
+      height: 60%;
+  }
+}
+
+@media screen and (max-width : 576px) {
+
+  .reposive-text {
+    font-size: 12px;
+  }
+}

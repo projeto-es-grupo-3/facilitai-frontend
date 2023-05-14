@@ -1,0 +1,23 @@
+.polygon {
+    z-index: -1;
+    top: -350px;
+    position: absolute;
+    transform: rotate(18deg);
+    height: 100%;
+    width: 100%;
+    background-color: #F7F7F7;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width : 1440px) {
+    .polygon {
+        height: 800px;
+    }
+}
+
+@media screen and (max-width : 576px) {
+
+    .polygon {
+         height: 200px;
+    }
+}

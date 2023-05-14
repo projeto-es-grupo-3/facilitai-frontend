@@ -1,0 +1,10 @@
+.customNavBar ul {
+    list-style-type: none;
+}
+
+.customNavItem a:visited, .customNavItem a:hover, .customNavItem a:link {
+    text-decoration: none;
+    text-transform: none;
+    color: #2E1F74;
+}
+
