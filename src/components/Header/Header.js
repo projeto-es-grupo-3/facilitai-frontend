@@ -4,7 +4,6 @@ import logo from '../../../public/images/logo.png';
 import { Roboto } from 'next/font/google';
 import styles from '@/components/Header/Header.module.css';
 
-
 const roboto = Roboto({
     weight: '400',
     subsets: ['latin'],

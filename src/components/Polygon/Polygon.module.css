@@ -1,22 +1,23 @@
 .polygon {
-    /* 
-    width: 90%;
-     transform: rotate(14deg);
-    background: #F7F7F7; */
-    /* height: 800px;    */
-    top: 200px;
-    background-image: url('../../../public/images/polygon.svg');
+    z-index: -1;
+    top: -350px;
+    position: absolute;
+    transform: rotate(18deg);
+    height: 100%;
+    width: 100%;
+    background-color: #F7F7F7;
+    background-repeat: no-repeat;
 }
-/* 
-.polygon {
-    position: relative;
-    top: -300px;
-    width: "auto";
-    height: 500px;
-    background: #F7F7F7;
-    border-style: solid;
-    border-width: 8em 0 0 8em;
-    border-color: transparent transparent transparent rgb(151, 235, 158);
-    overflow: hidden;
-} */
 
+@media screen and (max-width : 1440px) {
+    .polygon {
+        height: 800px;
+    }
+}
+
+@media screen and (max-width : 576px) {
+
+    .polygon {
+         height: 200px;
+    }
+}

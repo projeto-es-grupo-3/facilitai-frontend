@@ -61,7 +61,14 @@
     background-color: #30ABED;
     color: #FFFFFF;
     border: 0;
+    transition: background-color 1s ease;
+    transition: color 1s ease;
     border-radius: 10px;
+}
+.button:hover {
+    background-color: #F7F7F7;
+    color: #2E1F74;
+    box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
 }
 
 @media screen and (max-width : 576px) {
