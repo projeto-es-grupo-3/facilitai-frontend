@@ -1,13 +1,15 @@
 import Image from 'next/image';
 import book from '@/../public/gif/book.gif';
-import Form from '@/components/Form/Form';
 import { Roboto } from 'next/font/google';
 
 const roboto = Roboto({
     weight: '700',
     subsets: ['latin'],
 });
-export default function LoginContent() {
+export default function LoginContent(props) {
+
+    
+
     return (
         <main>
             <section className="container-fluid mt-5 mb-3">
@@ -23,7 +25,9 @@ export default function LoginContent() {
                         />
                     </div>
                     <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
-                        <Form />
+                        {
+                            props.children
+                        }
                     </div>
                 </div>
             </section>

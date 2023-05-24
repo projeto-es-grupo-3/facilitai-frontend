@@ -1,15 +1,13 @@
 import styles from '@/components/Form/Form.module.css'
-import Link from 'next/link'
-import React from 'react'
+import React from 'react';
 import { MdOutlineVisibilityOff, MdOutlineAccountCircle, MdOutlineVisibility } from 'react-icons/md'
-import { Roboto } from 'next/font/google'
-
+import { Roboto } from 'next/font/google';
 const roboto = Roboto({
     weight: '400',
     subsets: ['latin'],
   });
 
-export default function Form(props) {
+export default function Form({ChangeForm}) {
 
     const [user, setUser] = React.useState("")
     const [password, setPassword] = React.useState("")
@@ -32,7 +30,7 @@ export default function Form(props) {
                 </i>
             </div>
             <button className={`${styles.button} ${roboto.className}`}>Entrar</button>
-            <Link className={roboto.className} href="">Aluno da ufcg e ainda não cadastrado? Clique aqui!</Link>
+            <a className={roboto.className} onClick={()=>ChangeForm()} >Aluno da ufcg e ainda não cadastrado? Clique aqui!</a>
         </form>
     )
 }
