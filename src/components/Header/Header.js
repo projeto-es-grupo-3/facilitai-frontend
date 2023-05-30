@@ -42,6 +42,9 @@ function CustomNavBar() {
                         <Link className={`fw-semibold fs-4 text-uppercase text-custom1 ${roboto.className}`} href="/login">login</Link>
                     </li>
                     <li className={`${styles.customNavItem}`}>
+                        <Link className={`fw-semibold fs-4 text-uppercase text-custom1 ${roboto.className}`} href="/posts">posts</Link>
+                    </li>
+                    <li className={`${styles.customNavItem}`}>
                         <Link className={`fw-semibold fs-4 text-uppercase text-custom1 ${roboto.className}`} href="/contact">contact us</Link>
                     </li>
                 </ul>
@@ -70,6 +73,9 @@ function MobileNavBar() {
                         </li>
                         <li className="nav-item">
                             <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/login">login</Link>
+                        </li>
+                        <li className={`${styles.customNavItem}`}>
+                            <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/posts">posts</Link>
                         </li>
                         <li className="nav-item">
                             <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/contact">contact us</Link>

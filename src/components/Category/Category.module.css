@@ -1,0 +1,108 @@
+.selectCategory{
+display: flex;
+flex-direction: column;
+width: 652px;
+height: 415px;
+align-items: center;
+border: 6px solid #2E1F74;
+border-radius: 40px 0px;
+margin-left: 50px;
+}
+
+.boxContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.newPost{
+    flex: 1; 
+    width: 652px;
+    height: 158.99px;
+    background: url(../../../public/images/Criativo.png);
+    background-size: 119px 122px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 6px solid #2E1F74;
+    border-radius: 40px 0px;
+    transition: background-color 0.3s;
+}
+
+.newPost:hover{
+    background-color: #509fad;
+}
+
+.apartments{
+flex: 1; 
+box-sizing: border-box;
+width: 202px;
+height: 249px;
+background: url(../../../public/images/Predio.png);
+background-size: 160px 164px;
+background-repeat: no-repeat;
+background-position: center;
+border: 6px solid #2E1F74;
+border-radius: 40px 0px;
+transition: background-color 0.3s;
+}
+
+.apartments:hover{
+    background-color: #509fad;
+}
+
+.others{   
+flex: 1; 
+box-sizing: border-box;
+width: 248px;
+height: 249px;
+background: url(../../../public/images/Capelo.png);
+background-size: 122px 136px;
+background-repeat: no-repeat;
+background-position: center;
+border: 6px solid #2E1F74;
+border-radius: 40px 0px;
+transition: background-color 0.3s;
+}
+
+.others:hover{
+    background-color: #509fad;
+}
+
+.books{
+    flex: 1; 
+    box-sizing: border-box;
+    width: 202px;
+    height: 249px;
+    background: url(../../../public/images/Livro.png);
+    background-size: 139px 122px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 6px solid #2E1F74;
+    border-radius: 40px 0px;
+    transition: background-color 0.3s;
+    }
+
+    .books:hover{
+    background-color: #509fad;
+    }
+
+    .buttonWrapper{
+        position: relative;
+    }
+
+    .buttonText {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #FFF;
+        padding: 5px 10px;
+        font-size: 27px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+      }
+
+      .buttonWrapper:hover .buttonText {
+        opacity: 1;
+        pointer-events: auto;
+      }
