@@ -17,9 +17,7 @@ export default function LoginContent(props) {
                         <h1 className={`ms-2 mt-5 text-md-start fw-semibold text-custom1 ${roboto.className}`}>
                             Crie um anúncio ou selecione uma categoria para navegar!
                         </h1>
-                        <div className="align-self-sm-end align-self-left">
-                            <Category/>
-                        </div>
+                        <Category/>
                     </div>
                     <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
                         {
