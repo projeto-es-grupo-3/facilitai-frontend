@@ -10,15 +10,15 @@ const roboto = Roboto({
 
 export default function LastPosts() {
     const textButton = 'Procurando alguém para dividir apartamento no endereço ...';
-    const srcImage = '../../../public/images/Predio.png';
+    const imagem = 1;
 
     return (
         <div className={`bg-custom1 rounded-3 shadow d-flex flex-column justify-content-between align-items-center ${styles.lastPosts}`} action="">
             <h1 className={`mt-5 text-center ${styles.titulo} ${roboto.className}`}>Últimos anúncios</h1>
-            <PostType1 textButton={textButton} srcImage={srcImage} />
-            <PostType1 textButton={textButton} srcImage={srcImage} />
-            <PostType1 textButton={textButton} srcImage={srcImage} />
-            <PostType1 textButton={textButton} srcImage={srcImage} />
+            <PostType1 textButton={textButton} imagem={imagem} />
+            <PostType1 textButton={textButton} imagem={imagem} />
+            <PostType1 textButton={textButton} imagem={imagem} />
+            <PostType1 textButton={textButton} imagem={imagem} />
             <button className={`${styles.atualizar}`}>Atualizar Anúncios</button>
         </div>
     )

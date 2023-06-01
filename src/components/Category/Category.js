@@ -17,10 +17,10 @@ export default function Category() {
                         <span className={`${styles.buttonText}`}>Apartamentos</span>
                     </Link>
                 </div>
-                <div className={`${styles.buttonWreapper}`}>
+                <div className={`${styles.buttonWrapper}`}>
                     <Link href="all-posts">
                         <button className={`${styles.others}`}/>
-                        <span className={`${styles.buttonText}`}>Todos os Anúncios</span>
+                        <span className={`${styles.buttonText}`}>Anúncios</span>
                     </Link>
                 </div>
                 <div className={`${styles.buttonWrapper}`}>

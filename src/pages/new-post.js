@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Polygon from '@/components/Polygon/Polygon';
+import CreatePostContent from '@/contents/CreatePostContent';
 import React from "react"
 
 export default function Posts() {
@@ -14,6 +15,7 @@ export default function Posts() {
             </Head>
             <Polygon/>
             <Header />
+            <CreatePostContent/>
             <Footer />
         </>
     )

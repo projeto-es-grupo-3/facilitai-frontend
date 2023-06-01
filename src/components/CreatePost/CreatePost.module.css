@@ -1,0 +1,13 @@
+.button{
+    width: 130px;
+    height: 30px;
+    font-size: 28px;
+    color: #fff;
+    background: linear-gradient(180deg, #5E3FA0 0%, rgba(65, 91, 158, 0) 100%);
+    border-radius: 40px;
+    }
+    
+    
+    .button:hover{
+        background-color: #509fad;
+    }
