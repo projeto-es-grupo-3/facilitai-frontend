@@ -1,18 +1,44 @@
 import Head from 'next/head';
+import React from 'react';
+import { useRouter } from 'next/router';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import LoginContent from '@/contents/LoginContent';
 import Polygon from '@/components/Polygon/Polygon';
 import Form from '@/components/Form/Form';
 import SignUpForm from '@/components/SignUpForm/SignUpForm';
-import React from 'react'
+import { AuthContext } from '../context/authContext.js';
 
 export default function Login() {
 
+    const authContext = React.useContext(AuthContext);
+    const router = useRouter();
     const [form, setForm] = React.useState(true)
 
     const ChangeForm = () => {
         setForm(!form)
+    }
+
+    const SubmitSignUp = async (user, email, matriculation, campus, password, course) => {
+        
+        var form = {
+            "username": user,
+            "email": email,
+            "matricula": matriculation,
+            "campus": campus,
+            "password": password,
+            "curso": course
+        }
+
+        const res = await fetch('http://localhost:5000/register', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form)
+        });
+
+        return res.status
     }
 
     return (
@@ -26,7 +52,7 @@ export default function Login() {
             <Header />
             <LoginContent>
                 {
-                    form ? <Form ChangeForm={ChangeForm}/> : <SignUpForm ChangeForm={ChangeForm}/>
+                    form ? <Form SubmitSignIn={SubmitSignIn} ChangeForm={ChangeForm} /> : <SignUpForm SubmitSignUp={SubmitSignUp} ChangeForm={ChangeForm} />
                 }
             </LoginContent>
             <Footer />

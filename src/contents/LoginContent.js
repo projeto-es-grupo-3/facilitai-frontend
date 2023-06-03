@@ -8,8 +8,6 @@ const roboto = Roboto({
 });
 export default function LoginContent(props) {
 
-    
-
     return (
         <main>
             <section className="container-fluid mt-5 mb-3">

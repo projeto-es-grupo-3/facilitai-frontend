@@ -1,5 +1,5 @@
 .form {
-    height: 600px;
+    height: 700px;
     width: 500px;
 }
 
@@ -70,6 +70,12 @@
     background-color: #F7F7F7;
     color: #2E1F74;
     box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+}
+
+.formcheck {
+    width: 70%;
+    color: #F7F7F7;
+    border-radius: 10px;
 }
 
 @media screen and (max-width : 576px) {
