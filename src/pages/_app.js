@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from "react";
-import { AuthProvider } from '@/context/authContext';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {

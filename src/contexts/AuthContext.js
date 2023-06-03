@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
 
   const setUserAuthInfo = ({ data , user}) => {
     localStorage.setItem("token", data.access_token);
+    localStorage.setItem("user", user)
     setAuthState({
       token :data.access_token,
       user:user
@@ -18,9 +19,16 @@ const AuthProvider = ({ children }) => {
   };
 
   const isUserAuthenticated = () => {
-    if (authState.token) {
+
+    if (localStorage.getItem("token") != null && localStorage.getItem("user") != null) {
+      setAuthState({
+        token :localStorage.getItem("token"),
+        user: localStorage.getItem("user")
+      })
+    }
+    if (authState.token != null && authState.user != null) {
       return true;
-    } 
+    }
   };
 
   return (

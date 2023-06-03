@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { AuthContext } from "@/context/authContext";
+import { AuthContext } from "@/contexts/AuthContext";
 import React from 'react';
 import Router from 'next/router';
 

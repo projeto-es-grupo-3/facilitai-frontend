@@ -1,17 +1,19 @@
-import styles from '@/components/Form/Form.module.css'
 import React from 'react';
-import { MdOutlineVisibilityOff, MdOutlineAccountCircle, MdOutlineVisibility } from 'react-icons/md'
 import { Roboto } from 'next/font/google';
-const roboto = Roboto({
-    weight: '400',
-    subsets: ['latin'],
-  });
+import styles from '@/components/Form/Form.module.css';
+
+// @react-icons
+import { MdOutlineVisibilityOff, MdOutlineAccountCircle, MdOutlineVisibility } from 'react-icons/md';
 
 export default function Form({ ChangeForm, SubmitSignIn }) {
-    
-    const [user, setUser] = React.useState("")
-    const [password, setPassword] = React.useState("")
-    const [hidePassword, setHidePassword] = React.useState(true)
+
+    const roboto = Roboto({
+        weight: '400',
+        subsets: ['latin'],
+      });
+    const [user, setUser] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [hidePassword, setHidePassword] = React.useState(true);
     
     const SignIn = async (e) => {
         e.preventDefault()
