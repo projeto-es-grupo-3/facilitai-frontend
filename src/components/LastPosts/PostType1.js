@@ -23,7 +23,7 @@ const roboto = Roboto({
       <button className={`${styles.button} ${roboto.className} float-start` }>
         <Image className={`align-items-center`} src={livro} alt="" width={50} height={54} />
         {textButton}
-        
+ 
       </button>
       )
     }

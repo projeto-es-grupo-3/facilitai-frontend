@@ -1,13 +1,63 @@
 .button{
-    width: 130px;
-    height: 30px;
-    font-size: 28px;
+    font-size: 50px;
+    margin-left: 2%;
+    margin-bottom: 5px;
     color: #fff;
-    background: linear-gradient(180deg, #5E3FA0 0%, rgba(65, 91, 158, 0) 100%);
+    background: #2E1F74;
     border-radius: 40px;
     }
     
     
-    .button:hover{
-        background-color: #509fad;
-    }
+.button:hover{
+    background-color: #509fad;
+}
+
+.createPost{
+    width: 1073px;
+    height: 363px;
+    border-radius: 40px 0px;
+    margin-bottom: 35%;
+}
+
+.form{
+    width: 1073px;
+    height: 363px;
+
+    background: #2E1F74;
+    border-radius: 40px;
+}
+
+.selectImage{
+    width: 438.29px;
+    height: 363px;
+    background-Color: rgba(217, 217, 217, 0.2);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 40px 0px 0px 40px; 
+}
+
+.formWrapper {
+    color: #fff;
+    max-height: 400px; /* Defina a altura máxima desejada */
+    overflow-y: auto; /* Habilita a barra de rolagem vertical quando necessário */
+    width: 290px;
+    margin: 1%;
+  }
+  
+  .formScrollable {
+    max-height: 100%; /* Define a altura máxima igual à altura do elemento pai */
+  }
+
+  .divImg{
+    margin-left: 70px;
+    width: 200px;
+    height: 150px;
+    background: rgba(217, 217, 217, 0.2);
+    border-radius: 23px;
+  }
+
+  .img{
+    width: 120px;
+    height: 120px;
+  }

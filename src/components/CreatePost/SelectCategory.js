@@ -1,4 +1,4 @@
-import styles from '@/components/LastPosts/LastPosts.module.css';
+import styles from '@/components/CreatePost/CreatePost.module.css';
 import React from 'react';
 import { Roboto } from 'next/font/google';
 
@@ -7,20 +7,24 @@ const roboto = Roboto({
     subsets: ['latin'],
   });
 
-  const PostType1 = () => {
-    let categoria = 0;
-      return(
-        <div className="d-flex justify-content-between">
-        <button className={`${styles.button} ${roboto.className}`} onClick={categoria=1}>
-        <div className={`mx-auto`}>Apartamento</div>
+  const SelectCategory = ({category, onCategoryChange}) => {
+
+    const handleChange = (newCategory) => {
+      onCategoryChange(newCategory);
+    }
+  
+    return (
+      <div className="d-flex justify-content-end" style={{ width: '1073px' }}>
+        <button className={`btn btn-md btn-block ${styles.button} ${roboto.className}`} onClick={() => handleChange(1)}>
+          <div className="mx-auto">Apartamento</div>
         </button>
-        <button className={`${styles.button} ${roboto.className}`} onClick={categoria=2}>
-        <div className={`mx-auto`}>Geral</div>
+        <button className={`btn btn-md btn-block ${styles.button} ${roboto.className}`} onClick={() => handleChange(2)}>
+          <div className="mx-auto">Geral</div>
         </button>
-        <button className={`${styles.button} ${roboto.className}`} onClick={categoria=3}>
-        <div className={`mx-auto`}>Livro</div>
+        <button className={`btn btn-md btn-block ${styles.button} ${roboto.className}`} onClick={() => handleChange(3)}>
+          <div className="mx-auto">Livro</div>
         </button>
-        </div>
-      )
+      </div>
+    )
   }
-  export default PostType1;
+  export default SelectCategory;
