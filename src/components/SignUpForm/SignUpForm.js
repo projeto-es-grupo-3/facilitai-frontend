@@ -1,12 +1,16 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+import { Roboto } from 'next/font/google';
+import styles from '@/components/SignUpForm/SignUpForm.module.css';
+
+// @react-bootstrap
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { Popover, Spinner } from 'react-bootstrap';
-import styles from '@/components/SignUpForm/SignUpForm.module.css';
+
+// @react-icons
 import { MdOutlineVisibilityOff, MdOutlineAccountCircle, MdOutlineVisibility, MdOutlineEmail, MdOutlineSchool, MdOutlineContactMail } from 'react-icons/md'
 import { FaUniversity } from 'react-icons/fa';
-import { Roboto } from 'next/font/google';
-import Router from 'next/router';
 
 const roboto = Roboto({
     weight: '400',
@@ -15,23 +19,25 @@ const roboto = Roboto({
 
 export default function SignUpForm({ SubmitSignUp, ChangeForm }) {
 
-    const [matriculation, setmatriculation] = React.useState("")
-    const [email, setEmail] = React.useState("")
-    const [course, setCourse] = React.useState("")
-    const [user, setUser] = React.useState("")
-    const [campus, setCampus] = React.useState("")
-    const [password, setPassword] = React.useState("")
-    const [confirmPassword, setConfirmPassword] = React.useState("")
-    const [hidePassword, setHidePassword] = React.useState(true)
-    const [hideConfirmPassword, setHideConfirmPassword] = React.useState(true)
-    const [popup, setPopup] = React.useState(false)
-    const [submitComplete, setSubmitComplete] = React.useState(0)
-    const [spinner, setSpinner] = React.useState(false)
+    const [matriculation, setmatriculation] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [course, setCourse] = React.useState("");
+    const [user, setUser] = React.useState("");
+    const [campus, setCampus] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [confirmPassword, setConfirmPassword] = React.useState("");
+    const [hidePassword, setHidePassword] = React.useState(true);
+    const [hideConfirmPassword, setHideConfirmPassword] = React.useState(true);
+    const [popup, setPopup] = React.useState(false);
+    const [submitComplete, setSubmitComplete] = React.useState(0);
+    const [spinner, setSpinner] = React.useState(false);
+    const router = useRouter();
 
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+    
     const SignUp = async (e) => {
         e.preventDefault()
         if (!verifyPasswordEqual()) {
@@ -44,7 +50,7 @@ export default function SignUpForm({ SubmitSignUp, ChangeForm }) {
                 setSubmitComplete(2)
             }
             await sleep(3000)
-            Router.reload("/login")
+            router.push("/login")
         }
     }
     const verifyPasswordEqual = () => {

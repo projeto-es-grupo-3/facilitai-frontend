@@ -1,17 +1,25 @@
-import styles from '@/components/Form/Form.module.css'
 import React from 'react';
-import { MdOutlineVisibilityOff, MdOutlineAccountCircle, MdOutlineVisibility } from 'react-icons/md'
 import { Roboto } from 'next/font/google';
-const roboto = Roboto({
-    weight: '400',
-    subsets: ['latin'],
-  });
+import styles from '@/components/Form/Form.module.css';
 
-export default function Form({ChangeForm}) {
+// @react-icons
+import { MdOutlineVisibilityOff, MdOutlineAccountCircle, MdOutlineVisibility } from 'react-icons/md';
 
-    const [user, setUser] = React.useState("")
-    const [password, setPassword] = React.useState("")
-    const [hidePassword, setHidePassword] = React.useState(true)
+export default function Form({ ChangeForm, SubmitSignIn }) {
+
+    const roboto = Roboto({
+        weight: '400',
+        subsets: ['latin'],
+      });
+    const [user, setUser] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [hidePassword, setHidePassword] = React.useState(true);
+    
+    const SignIn = async (e) => {
+        e.preventDefault()
+        SubmitSignIn(user, password)
+    }
+
     return (
         <form className={`bg-custom1 rounded-3 shadow d-flex flex-column justify-content-between align-items-center ${styles.form}`} action="">
             <h3 className={`mt-5 text-center ${roboto.className}`}>Faça o login na plataforma Facilitaí</h3>
@@ -29,7 +37,7 @@ export default function Form({ChangeForm}) {
                     }
                 </i>
             </div>
-            <button className={`${styles.button} ${roboto.className}`}>Entrar</button>
+            <button className={`${styles.button} ${roboto.className}`} onClick={e => SignIn(e)}>Entrar</button>
             <a className={roboto.className} onClick={()=>ChangeForm()} >Aluno da ufcg e ainda não cadastrado? Clique aqui!</a>
         </form>
     )

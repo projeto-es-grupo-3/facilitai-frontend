@@ -1,13 +1,17 @@
-import Head from 'next/head';
 import React from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
+
+// @components
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import LoginContent from '@/contents/LoginContent';
 import Polygon from '@/components/Polygon/Polygon';
 import Form from '@/components/Form/Form';
 import SignUpForm from '@/components/SignUpForm/SignUpForm';
-import { AuthContext } from '../context/authContext.js';
+
+// @contexts
+import { AuthContext } from '../contexts/AuthContext.js';
 
 export default function Login() {
 
@@ -17,6 +21,24 @@ export default function Login() {
 
     const ChangeForm = () => {
         setForm(!form)
+    }
+
+    const SubmitSignIn = async (user, password) => {
+        var form = {
+            "username": user,
+            "password": password
+        }
+
+        const res = await fetch('http://localhost:5000/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form)
+        });
+        
+        res.json().then(data => authContext.setAuthState({data,user}))
+        router.push("/dashboard")
     }
 
     const SubmitSignUp = async (user, email, matriculation, campus, password, course) => {
