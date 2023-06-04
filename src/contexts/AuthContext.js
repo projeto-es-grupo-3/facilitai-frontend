@@ -1,34 +1,28 @@
-import React from "react";
+import {createContext, useState} from "react";
 
-const AuthContext = React.createContext();
+const AuthContext = createContext();
 const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }) => {
-  const [authState, setAuthState] = React.useState({
-    token: "",
-    user:""
+  const [authState, setAuthState] = useState({
+    token: null,
+    user: null
   });
 
-  const setUserAuthInfo = ({ data , user}) => {
-    localStorage.setItem("token", data.access_token);
-    localStorage.setItem("user", user)
+  const setUserAuthInfo = ({token , user}) => {
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", user);
     setAuthState({
-      token :data.access_token,
-      user:user
+      token:localStorage.getItem("token"),
+      user:localStorage.getItem("user")
     });
   };
 
   const isUserAuthenticated = () => {
-
-    if (localStorage.getItem("token") != null && localStorage.getItem("user") != null) {
-      setAuthState({
-        token :localStorage.getItem("token"),
-        user: localStorage.getItem("user")
-      })
+    if (localStorage.getItem("token") != undefined) {
+      return true
     }
-    if (authState.token != null && authState.user != null) {
-      return true;
-    }
+    return false
   };
 
   return (
