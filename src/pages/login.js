@@ -1,4 +1,4 @@
-import React from 'react';
+import {useContext, useEffect, useState} from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -15,9 +15,15 @@ import { AuthContext } from '../contexts/AuthContext.js';
 
 export default function Login() {
 
-    const authContext = React.useContext(AuthContext);
+    const authContext = useContext(AuthContext);
     const router = useRouter();
-    const [form, setForm] = React.useState(true)
+    const [form, setForm] = useState(true);
+
+    useEffect(() => {
+        if (authContext.isUserAuthenticated()) {
+            router.push("/dashboard")
+        }
+    }, [])
 
     const ChangeForm = () => {
         setForm(!form)
@@ -29,15 +35,19 @@ export default function Login() {
             "password": password
         }
 
-        const res = await fetch('http://localhost:5000/login', {
+        const res = await fetch(`${process.env.BACK_END_HOST}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(form)
-        });
-        
-        res.json().then(data => authContext.setAuthState({data,user}))
+        })
+       res.json().then((data) => {
+        return data.access_token
+        }).then((token) => {
+            authContext.setAuthState({token,user})
+        })
+       
         router.push("/dashboard")
     }
 
@@ -52,7 +62,7 @@ export default function Login() {
             "curso": course
         }
 
-        const res = await fetch('http://localhost:5000/register', {
+        const res = await fetch(`${process.env.BACK_END_HOST}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

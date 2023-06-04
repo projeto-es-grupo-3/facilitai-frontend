@@ -5,12 +5,14 @@ import styles from '@/components/Form/Form.module.css';
 // @react-icons
 import { MdOutlineVisibilityOff, MdOutlineAccountCircle, MdOutlineVisibility } from 'react-icons/md';
 
+
+const roboto = Roboto({
+    weight: '400',
+    subsets: ['latin'],
+});
+
 export default function Form({ ChangeForm, SubmitSignIn }) {
 
-    const roboto = Roboto({
-        weight: '400',
-        subsets: ['latin'],
-      });
     const [user, setUser] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [hidePassword, setHidePassword] = React.useState(true);

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Roboto } from 'next/font/google';
 import styles from '@/components/SignUpForm/SignUpForm.module.css';
@@ -19,18 +19,18 @@ const roboto = Roboto({
 
 export default function SignUpForm({ SubmitSignUp, ChangeForm }) {
 
-    const [matriculation, setmatriculation] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [course, setCourse] = React.useState("");
-    const [user, setUser] = React.useState("");
-    const [campus, setCampus] = React.useState("");
-    const [password, setPassword] = React.useState("");
-    const [confirmPassword, setConfirmPassword] = React.useState("");
-    const [hidePassword, setHidePassword] = React.useState(true);
-    const [hideConfirmPassword, setHideConfirmPassword] = React.useState(true);
-    const [popup, setPopup] = React.useState(false);
-    const [submitComplete, setSubmitComplete] = React.useState(0);
-    const [spinner, setSpinner] = React.useState(false);
+    const [matriculation, setmatriculation] = useState("");
+    const [email, setEmail] = useState("");
+    const [course, setCourse] = useState("");
+    const [user, setUser] = useState("");
+    const [campus, setCampus] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [hidePassword, setHidePassword] = useState(true);
+    const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
+    const [popup, setPopup] = useState(false);
+    const [submitComplete, setSubmitComplete] = useState(0);
+    const [spinner, setSpinner] = useState(false);
     const router = useRouter();
 
 
@@ -44,13 +44,13 @@ export default function SignUpForm({ SubmitSignUp, ChangeForm }) {
             setSpinner(true)
             await sleep(3000)
             const response = await SubmitSignUp(user, email, matriculation, campus, password, course)
-            if ( response === 201) {
+            if (response === 201) {
                 setSubmitComplete(1)
             } else if (response === 409) {
                 setSubmitComplete(2)
             }
             await sleep(3000)
-            router.push("/login")
+            router.reload("/login")
         }
     }
     const verifyPasswordEqual = () => {
