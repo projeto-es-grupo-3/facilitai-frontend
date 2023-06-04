@@ -8,7 +8,7 @@ Repositório destinado à parte de front-end da aplicação desenvolvida pelo gr
 
 - Uma máquina que possua:
     - [Node.js®](https://nodejs.org/en) JavaScript runtime environment.
-    - [git](https://git-scm.com/) distributed version control system
+    - [git](https://git-scm.com/) distributed version control system.
 
 **Para instalar corretamente as dependências da aplicação olhar esta [documentação](./docs/setup.md)**
 
@@ -17,14 +17,8 @@ Repositório destinado à parte de front-end da aplicação desenvolvida pelo gr
 Dentro deste repositório `facilitai-frontend` execute estes comandos.
 
 ```
-# instalando as dependências
-npm install
-
-# fazer o build da aplicação 
-npm run build 
-
-# iniciar a aplicação
-npm run start
+make install
+make run
 ```
 
 ## 4. Padrões de commit
@@ -33,7 +27,7 @@ npm run start
 * fix: Corrigindo um bug.
 * docs: Adicionando documentação.
 * refactor: Alterando o código sem adicionar feature ou ser um bug fix. (eg: mudar .gitignore ou alterar o código para uma padrão melhor).
-* test: aAdicionando teste novo ou fazendo mudanças em um teste.
+* test: Adicionando teste novo ou fazendo mudanças em um teste.
 
 Um exemplo de commit:
 

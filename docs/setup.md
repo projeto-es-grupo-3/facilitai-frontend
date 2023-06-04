@@ -13,7 +13,6 @@ nano ~/.profile
 
 # Copie os seguintes comandos ao final do arquivo
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
 ```
 
 Para obter usar o Node.js®
