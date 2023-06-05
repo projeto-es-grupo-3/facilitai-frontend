@@ -8,6 +8,7 @@ import Footer from '@/components/Footer/Footer';
 import Polygon from '@/components/Polygon/Polygon';
 import Category from '@/components/Category/Category';
 import LastPosts from '@/components/LastPosts/LastPosts';
+import PostType from '@/components/LastPosts/PostType';
 
 export default function Dashboard() {
   const authContext = useContext(AuthContext);
@@ -38,7 +39,12 @@ export default function Dashboard() {
       <HeaderAftLogin />
       <DashboardContent>
           <Category/>
-          <LastPosts/>
+          <LastPosts>
+            <PostType 
+              textButton={"Procurando alguém para dividir apartamento no endereço"}
+              category={"books"}
+              />
+          </LastPosts>
       </DashboardContent>
       <Footer />
     </>
