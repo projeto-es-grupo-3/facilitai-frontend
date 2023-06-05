@@ -6,6 +6,8 @@ import DashboardContent from '@/contents/DashboardContent';
 import HeaderAftLogin from '@/components/Header/HeaderAftLogin';
 import Footer from '@/components/Footer/Footer';
 import Polygon from '@/components/Polygon/Polygon';
+import Category from '@/components/Category/Category';
+import LastPosts from '@/components/LastPosts/LastPosts';
 
 export default function Dashboard() {
   const authContext = useContext(AuthContext);
@@ -34,9 +36,10 @@ export default function Dashboard() {
       </Head>
       <Polygon />
       <HeaderAftLogin />
-      <div className='d-flex align-items-center justify-content-center' style={{marginBottom: '10vw'}}>
-      <DashboardContent >Dashboard {authContext.authState.user}</DashboardContent>
-      </div>
+      <DashboardContent>
+          <Category/>
+          <LastPosts/>
+      </DashboardContent>
       <Footer />
     </>
   );

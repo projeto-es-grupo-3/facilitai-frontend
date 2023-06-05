@@ -1,8 +1,7 @@
-.selectCategory {
-  width: 45.2778vw; /* 652px */
-  height: 28.3333vw;
-  border: 0.6vw solid #2E1F74;
-  border-radius: 2vw 0;
+.select {
+  border: 5px solid #2E1F74;
+  transition: background-color 0.3s;
+  cursor: pointer
 }
 
 .newPost,
@@ -15,55 +14,107 @@
   transition: background-color 0.3s;
 }
 
+
 .newPost {
+  max-width: 550px;
+  height: 150px;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 2vw 0;
   background: url(../../../public/images/criativo.png);
-  width: 44.5vw;
-  height: 10.62vw;
-  border-radius: 1.4vw 0;
   background-size: 8.5vw 8.5vw;
   background-position: center;
   background-repeat: no-repeat;
 }
+
 
 .apartments {
-  width: 14.5vw;
-  height: 17vw;
+  max-width: 200px;
+  height: 200px;
+  min-height: 200px;
+  border-radius: 2vw 0;
   background: url(../../../public/images/predio.png);
+  background-position: center;
   background-size: 8.5vw 8.5vw;
   background-repeat: no-repeat;
-  background-position: center;
 }
 
-.others {
+.others { 
+  max-width: 200px;
+  height: 200px;
+  min-height: 200px;
+  border-radius: 2vw 0;
   background: url(../../../public/images/capelo.png);
-  width: 15.5vw;
-  height: 17vw;
+  background-position: center;
   background-size: 8.5vw 8.5vw;
   background-repeat: no-repeat;
-  background-position: center;
 }
 
 .books {
-  width: 14.5vw;
-  height: 17vw;
+  max-width: 200px;
+  height: 200px;
+  min-height: 200px;
+  border-radius: 2vw 0;
   background: url(../../../public/images/livro.png);
+  animation-duration: 4s;
+  background-position: center;
   background-size: 8.5vw 8.5vw;
   background-repeat: no-repeat;
-  background-position: center;
 }
 
 .buttonText {
-  position: center;
-  transform: translate(-50%, -50%);
   color: #FFF;
-  padding: 0.6vw 1.2vw;
   font-size: 1.5vw;
+  padding: 0.6vw 1.2vw;
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
 }
+.newPost:hover {
+  opacity: 0.8;
+  background-color: grey;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+  transform: translate(-2%, -2%);
+}
 
-.buttonWrapper:hover .buttonText {
+.apartments:hover  {
+  opacity: 0.8;
+  background-color: grey;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+  transform: translate(-2%, -2%);
+}
+
+.books:hover  {
+  opacity: 0.8;
+  background-color: grey;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+  transform: translate(-2%, -2%);
+}
+
+.others:hover  {
+  opacity: 0.8;
+  background-color: grey;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+  transform: translate(-2%, -2%);
+}
+
+
+.select .newPost:hover .buttonText {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.select .apartments:hover .buttonText {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.select .books:hover .buttonText {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.select .others:hover .buttonText {
   opacity: 1;
   pointer-events: auto;
 }

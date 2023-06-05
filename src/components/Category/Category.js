@@ -3,51 +3,34 @@ import Link from 'next/link';
 import { Roboto } from 'next/font/google';
 
 
+{/* <button className={`row btn btn-primary ${styles.newPost}`}>
+</button> */}
+{/* <Link href="/new-post"></Link> */ }
+
 const roboto = Roboto({
-    weight: '700',
-    subsets: ['latin'],
+  weight: '700',
+  subsets: ['latin'],
 });
 
 export default function Category() {
   return (
-    <div className="container">
-    <div className={`d-flex flex-column ${styles.selectCategory}`}>
-      <section>
-        <div className="row">
-          <div className={`col-12 ${styles.buttonWrapper}`}>
-            <Link href="new-post">
-              <button className={`btn btn-primary ${styles.newPost}`}>
-                <span className={`${styles.buttonText}`}>Criar Anúncio</span>
-              </button>
-            </Link>
-          </div>
+    <section className={`container ${styles.select}`}>
+      <div className="row">
+        <div className={`col-12  d-flex justify-content-center align-items-center ${styles.select} ${styles.newPost}`}>
+          <span className={`text-center ${styles.buttonText}`}>Criar Anúncio</span>
         </div>
-      </section>
-        <section className="d-flex justify-content-start">
-          <div className={`${styles.buttonWrapper}`}>
-            <Link href="posts-aptms">
-              <button className={`btn btn-primary ${styles.apartments}`}>
-                <span className={`${styles.buttonText}`}>Apartamentos</span>
-              </button>
-            </Link>
-          </div>
-          <div className={`${styles.buttonWrapper}`}>
-            <Link href="all-posts">
-              <button className={`btn btn-primary ${styles.others}`}>
-                <span className={`${styles.buttonText}`}>Anúncios</span>
-              </button>
-            </Link>
-          </div>
-          <div className={`${styles.buttonWrapper}`}>
-            <Link href="posts-books">
-              <button className={`btn btn-primary ${styles.books}`}>
-                <span className={`${styles.buttonText}`}>Livros</span>
-              </button>
-            </Link>
-          </div>
-        </section>
-    </div>
-  </div>
-
+      </div>
+      <div className="row">
+        <div className={`col-4 d-flex justify-content-center align-items-center ${styles.select} ${styles.apartments}`}>
+          <span id="apartments" className={`text-center ${styles.buttonText}`}>Apartamentos</span>
+        </div>
+        <div className={`col-4 d-flex justify-content-center align-items-center ${styles.select} ${styles.books}`}>
+          <span id="books" className={`text-center ${styles.buttonText}`}>Anúncios</span>
+        </div>
+        <div className={`col-4 d-flex justify-content-center align-items-center ${styles.select} ${styles.others}`}>
+        <span id="others" className={`text-center ${styles.buttonText}`}>Outros</span>
+        </div>
+      </div>
+    </section>
   );
 }
