@@ -1,0 +1,69 @@
+.selectCategory {
+  width: 45.2778vw; /* 652px */
+  height: 28.3333vw;
+  border: 0.6vw solid #2E1F74;
+  border-radius: 2vw 0;
+}
+
+.newPost,
+.apartments,
+.others,
+.books {
+  flex: 1;
+  border: 0.55vw solid #2E1F74;
+  border-radius: 2vw 0;
+  transition: background-color 0.3s;
+}
+
+.newPost {
+  background: url(../../../public/images/criativo.png);
+  width: 44.5vw;
+  height: 10.62vw;
+  border-radius: 1.4vw 0;
+  background-size: 8.5vw 8.5vw;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.apartments {
+  width: 14.5vw;
+  height: 17vw;
+  background: url(../../../public/images/predio.png);
+  background-size: 8.5vw 8.5vw;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.others {
+  background: url(../../../public/images/capelo.png);
+  width: 15.5vw;
+  height: 17vw;
+  background-size: 8.5vw 8.5vw;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.books {
+  width: 14.5vw;
+  height: 17vw;
+  background: url(../../../public/images/livro.png);
+  background-size: 8.5vw 8.5vw;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.buttonText {
+  position: center;
+  transform: translate(-50%, -50%);
+  color: #FFF;
+  padding: 0.6vw 1.2vw;
+  font-size: 1.5vw;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.buttonWrapper:hover .buttonText {
+  opacity: 1;
+  pointer-events: auto;
+}
