@@ -10,6 +10,7 @@ import Category from '@/components/Category/Category';
 import LastPosts from '@/components/LastPosts/LastPosts';
 import PostType from '@/components/LastPosts/PostType';
 import UserTab from '@/components/UserTab/UserTab';
+import FixedButton from '@/components/FixedButton/FixedButton';
 
 // @contents
 import DashboardContent from '@/contents/DashboardContent';
@@ -73,6 +74,7 @@ export default function Dashboard() {
           />
         </LastPosts>
       </DashboardContent>
+      <FixedButton/>
       <Footer />
     </>
   );
