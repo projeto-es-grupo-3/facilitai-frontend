@@ -1,17 +1,19 @@
-import {useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 // @components
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
-import LoginContent from '@/contents/LoginContent';
 import Polygon from '@/components/Polygon/Polygon';
 import Form from '@/components/Form/Form';
 import SignUpForm from '@/components/SignUpForm/SignUpForm';
 
+// @contents
+import LoginContent from '@/contents/LoginContent';
+
 // @contexts
-import { AuthContext } from '../contexts/AuthContext.js';
+import { AuthContext } from '@/contexts/AuthContext.js';
 
 export default function Login() {
 
