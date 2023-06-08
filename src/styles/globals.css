@@ -4,6 +4,7 @@ body {
 .text-custom1 {
   color: #2E1F74 !important;
 }
+
 .bg-custom1 {
   background-color: #2E1F74 !important;
 }
@@ -19,13 +20,25 @@ body {
 .bg-custom3 {
   background-color: #F7F7F7 !important;
 }
+.text-custom4 {
+  color: #30ABED !important;
+}
+.bg-custom4 {
+  background-color: #30ABED !important;
+}
 header {
   background: rgba(255, 255, 255, 0);
 }
 
+
 .gifSection {
   width: 80%;
   height: 80%;
+}
+
+.link a:visited, .link a:hover, .link a:link {
+  text-decoration: none;
+  text-transform: none;
 }
 
 @media screen and (max-width : 992px ) {

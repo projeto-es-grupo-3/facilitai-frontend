@@ -1,0 +1,120 @@
+.select {
+  border: 5px solid #2E1F74;
+  transition: background-color 0.3s;
+  cursor: pointer
+}
+
+.newPost,
+.apartments,
+.others,
+.books {
+  flex: 1;
+  border: 0.55vw solid #2E1F74;
+  border-radius: 2vw 0;
+  transition: background-color 0.3s;
+}
+
+
+.newPost {
+  max-width: 550px;
+  height: 150px;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 2vw 0;
+  background: url(../../../public/images/criativo.png);
+  background-size: 8.5vw 8.5vw;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.apartments {
+  max-width: 200px;
+  height: 200px;
+  min-height: 200px;
+  border-radius: 2vw 0;
+  background: url(../../../public/images/predio.png);
+  background-position: center;
+  background-size: 8.5vw 8.5vw;
+  background-repeat: no-repeat;
+}
+
+.others { 
+  max-width: 200px;
+  height: 200px;
+  min-height: 200px;
+  border-radius: 2vw 0;
+  background: url(../../../public/images/capelo.png);
+  background-position: center;
+  background-size: 8.5vw 8.5vw;
+  background-repeat: no-repeat;
+}
+
+.books {
+  max-width: 200px;
+  height: 200px;
+  min-height: 200px;
+  border-radius: 2vw 0;
+  background: url(../../../public/images/livro.png);
+  animation-duration: 4s;
+  background-position: center;
+  background-size: 8.5vw 8.5vw;
+  background-repeat: no-repeat;
+}
+
+.buttonText {
+  color: #FFF;
+  font-size: 1.5vw;
+  padding: 0.6vw 1.2vw;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.newPost:hover {
+  opacity: 0.8;
+  background-color: grey;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+  transform: translate(-2%, -2%);
+}
+
+.apartments:hover  {
+  opacity: 0.8;
+  background-color: grey;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+  transform: translate(-2%, -2%);
+}
+
+.books:hover  {
+  opacity: 0.8;
+  background-color: grey;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+  transform: translate(-2%, -2%);
+}
+
+.others:hover  {
+  opacity: 0.8;
+  background-color: grey;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+  transform: translate(-2%, -2%);
+}
+
+
+.select .newPost:hover .buttonText {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.select .apartments:hover .buttonText {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.select .books:hover .buttonText {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.select .others:hover .buttonText {
+  opacity: 1;
+  pointer-events: auto;
+}
