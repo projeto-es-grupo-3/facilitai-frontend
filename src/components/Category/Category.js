@@ -2,11 +2,6 @@ import styles from '@/components/Category/Category.module.css';
 import Link from 'next/link';
 import { Roboto } from 'next/font/google';
 
-
-{/* <button className={`row btn btn-primary ${styles.newPost}`}>
-</button> */}
-{/* <Link href="/new-post"></Link> */ }
-
 const roboto = Roboto({
   weight: '700',
   subsets: ['latin'],

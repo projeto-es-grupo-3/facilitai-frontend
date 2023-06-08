@@ -3,12 +3,14 @@ import { useRouter } from 'next/router';
 import { AuthContext } from "@/contexts/AuthContext";
 import {useContext, useEffect} from 'react';
 import DashboardContent from '@/contents/DashboardContent';
-import HeaderAftLogin from '@/components/Header/HeaderAftLogin';
+import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Polygon from '@/components/Polygon/Polygon';
 import Category from '@/components/Category/Category';
 import LastPosts from '@/components/LastPosts/LastPosts';
 import PostType from '@/components/LastPosts/PostType';
+import UserTab from '@/components/UserTab/UserTab';
+import ImageUser from '../../public/images/perfil.png';
 
 export default function Dashboard() {
   const authContext = useContext(AuthContext);
@@ -27,6 +29,9 @@ export default function Dashboard() {
     } 
   }, [])
 
+  const HandleLogOut = () => {
+    console.log("log out");
+  }
 
   return (
     <>
@@ -36,7 +41,9 @@ export default function Dashboard() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Polygon />
-      <HeaderAftLogin />
+      <Header logged={true}>
+        <UserTab name={authContext.authState.user} image={ImageUser} HandleLogOut={HandleLogOut}/>
+      </Header>
       <DashboardContent>
           <Category/>
           <LastPosts>
