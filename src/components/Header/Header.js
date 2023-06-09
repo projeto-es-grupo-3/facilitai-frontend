@@ -1,15 +1,20 @@
+import styles from '@/components/Header/Header.module.css';
+import logo from '../../../public/images/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '../../../public/images/logo.png';
 import { Roboto } from 'next/font/google';
-import styles from '@/components/Header/Header.module.css';
+
+// @react-bootstrap
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 const roboto = Roboto({
     weight: '400',
     subsets: ['latin'],
 });
 
-export default function Header({children, logged }) {
+export default function Header({ children, logged }) {
     return (
         <header>
             <nav className="navbar m-0 p-0 mt-5">
@@ -22,11 +27,11 @@ export default function Header({children, logged }) {
                                     children
                                 }
                             </CustomNavBar>
-                            <MobileNavBar logged={logged}>
+                            <OffcanvasExample logged={logged}>
                                 {
                                     children
                                 }
-                            </MobileNavBar>
+                            </OffcanvasExample>
                         </div>
                     </div>
                 </div>
@@ -35,7 +40,7 @@ export default function Header({children, logged }) {
     )
 }
 
-function CustomNavBar({children, logged }) {
+function CustomNavBar({ children, logged }) {
     return (
         <>
             <div className={`row w-100 ${styles.customNavBar} d-none d-md-block mt-4`}>
@@ -50,12 +55,19 @@ function CustomNavBar({children, logged }) {
                         <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/contact">contate-nos</Link>
                     </li>
                     {
+                        logged ?
+                            <li className={`${styles.customNavItem}`}>
+                                <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/posts">posts</Link>
+                            </li>
+                            : <></>
+                    }
+                    {
                         logged ? children
-                        
-                        :
-                        <li className={`${styles.customNavItem}`}>
-                            <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/login">login</Link>
-                        </li>
+
+                            :
+                            <li className={`${styles.customNavItem}`}>
+                                <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/login">login</Link>
+                            </li>
                     }
                 </ul>
             </div>
@@ -63,41 +75,53 @@ function CustomNavBar({children, logged }) {
     )
 }
 
-function MobileNavBar({children, logged }) {
+
+function OffcanvasExample({ children, logged }) {
     return (
         <>
-            <button className="d-md-none align-self-center navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className=" offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div className="offcanvas-header">
-                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div className="offcanvas-body">
-                    <ul className="navbar-nav justify-content-start flex-grow-1 pe-3">
-                        <li className="nav-item">
-                            <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/">home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/about">sobre nós</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/contact">contate-nos</Link>
-                        </li>
+            <Navbar key={"md"} expand={"md"} className="mb-3 d-md-none">
+                <Container fluid>
+                    <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${"md"}`} />
+                    <Navbar.Offcanvas
+                        id={`offcanvasNavbar-expand-${"md"}`}
+                        aria-labelledby={`offcanvasNavbarLabel-expand-${"md"}`}
+                        placement="end"
+                    >
+                        <Offcanvas.Header closeButton>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            <ul className="navbar-nav justify-content-start flex-grow-1 pe-3">
+                                <li className="nav-item">
+                                    <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/">home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/about">sobre nós</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/contact">contate-nos</Link>
+                                </li>
+                                {
+                                    logged ?
+                                        <li className={`${styles.customNavItem}`}>
+                                            <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/posts">posts</Link>
+                                        </li>
+                                        : <></>
+                                }
+                                {
 
-                        {
-                       
-                       logged ? <><hr/> {children}</>
-                        
-                        :
-                        <li className="nav-item">
-                        <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/login">login</Link>
-                    </li>
-                    }
-                        
-                    </ul>
-                </div>
-            </div>
+                                    logged ? <><hr /> {children}</>
+
+                                        :
+                                        <li className="nav-item">
+                                            <Link className={`nav-link active fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} aria-current="page" href="/login">login</Link>
+                                        </li>
+                                }
+
+                            </ul>
+                        </Offcanvas.Body>
+                    </Navbar.Offcanvas>
+                </Container>
+            </Navbar>
         </>
-    )
+    );
 }
