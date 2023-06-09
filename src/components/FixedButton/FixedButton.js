@@ -15,17 +15,17 @@ export default function FixedButton() {
     return (
         <div className={`bg-custom4 d-lg-none d-flex justify-content-center align-items-center ${boxOpen ? styles.actionButtonActivated : styles.actionButton} `} onClick={() => setBoxOpen(!boxOpen)}>
             {
-                !boxOpen ? <i><FiPlus className={`text-custom1 `} /></i> :
+                !boxOpen ? <i><FiPlus className={`text-custom3 `} /></i> :
                     <div className="row d-flex justify-content-end">
                         <div className="col-12 fs-5 w-75 text-center">
                             Crie um anúncio ou selecione uma categoria para navegar!
                         </div>
-                        <hr className="w-75"/>
+                        <hr className="w-75" />
                         <div className="col-12 link w-75">
                             <div className="row">
                                 <div className="col-3"><i><BsBuildingsFill /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5" href="/search?var=apartment">
+                                    <Link className="fs-5 text-custom3" href="/search?var=apartment">
                                         <span>Apartamentos</span>
                                     </Link>
                                 </div>
@@ -35,7 +35,7 @@ export default function FixedButton() {
                             <div className="row">
                                 <div className="col-3"><i><HiOutlineBookOpen /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5" href="/search?var=books">
+                                    <Link className="fs-5 text-custom3" href="/search?var=books">
                                         <span>Livros</span>
                                     </Link>
                                 </div>
@@ -45,18 +45,18 @@ export default function FixedButton() {
                             <div className="row">
                                 <div className="col-3"><i><MdOutlineSchool /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5" href="/search?var=others">
+                                    <Link className="fs-5 text-custom3" href="/search?var=others">
                                         <span>Outros</span>
                                     </Link>
                                 </div>
                             </div>
                         </div>
-                        <hr className="w-75"/>
+                        <hr className="w-75" />
                         <div className="col-12 link w-75">
                             <div className="row">
                                 <div className="col-3"><i><MdCreate /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5" href="/createpost">
+                                    <Link className="fs-5 text-custom3" href="/createpost">
                                         <span>Criar anúncio</span>
                                     </Link>
                                 </div>
