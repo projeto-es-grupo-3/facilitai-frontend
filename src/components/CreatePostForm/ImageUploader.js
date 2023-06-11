@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styles from '@/components/CreatePost/CreatePost.module.css';
+import styles from '@/components/CreatePostForm/CreatePostForm.module.css';
 
 const ImageUploader = ({ onImageSelect, selectedImage }) => {
   const fileInputRef = useRef(null);

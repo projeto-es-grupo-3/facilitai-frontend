@@ -1,22 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { Roboto } from 'next/font/google';
-import styles from '@/components/CreatePost/CreatePost.module.css';
-import SelectCategory from '@/components/CreatePost/SelectCategory';
-import FormApartamento from '@/components/CreatePost/FormApartamento';
-import FormGeral from '@/components/CreatePost/FormGeneric';
-import FormLivro from '@/components/CreatePost/FormBook';
+import styles from '@/components/CreatePostForm/CreatePostForm.module.css';
+import SelectCategory from '@/components/CreatePostForm/SelectCategory';
+import FormApartamento from '@/components/CreatePostForm/FormApartamento';
+import FormGeral from '@/components/CreatePostForm/FormGeneric';
+import FormLivro from '@/components/CreatePostForm/FormBook';
 import Image from 'next/image';
 import predio from '../../../public/images/predio.png';
 import capelo from '../../../public/images/capelo.png';
 import livro from '../../../public/images/livro.png';
-import ImageUploader from '@/components/CreatePost/ImageUploader';
+import ImageUploader from '@/components/CreatePostForm/ImageUploader';
 
 const roboto = Roboto({
   weight: '400',
   subsets: ['latin'],
 });
 
-export default function CreatePost() {
+export default function CreatePostForm() {
   const [category, setCategory] = useState(2);
   const [selectedImage, setSelectedImage] = useState('');
   const fileInputRef = useRef(null);

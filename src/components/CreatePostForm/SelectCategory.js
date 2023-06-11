@@ -1,4 +1,4 @@
-import styles from '@/components/CreatePost/CreatePost.module.css';
+import styles from '@/components/CreatePostForm/CreatePostForm.module.css';
 import React from 'react';
 import { Roboto } from 'next/font/google';
 

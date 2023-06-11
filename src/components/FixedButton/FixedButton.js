@@ -56,7 +56,7 @@ export default function FixedButton() {
                             <div className="row">
                                 <div className="col-3"><i><MdCreate /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5 text-custom3" href="/createpost">
+                                    <Link className="fs-5 text-custom3" href="/create-post">
                                         <span>Criar anúncio</span>
                                     </Link>
                                 </div>

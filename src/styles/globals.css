@@ -37,6 +37,8 @@ header {
 }
 
 .link a:visited, .link a:hover, .link a:link {
+  margin: 0;
+  padding: 0;
   text-decoration: none;
   text-transform: none;
 }

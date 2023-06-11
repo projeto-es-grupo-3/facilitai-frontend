@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import FormField from './FormField';
-import styles from '@/components/CreatePost/CreatePost.module.css';
+import styles from '@/components/CreatePostForm/CreatePostForm.module.css';
 
-  export default function FormGeral() {
+  export default function FormLivro () {
     
     const [dados, setDados] = useState({
         titulo: '',
         descricao: '',
+        preco: '',
+        status: '',
+        genero: '',
+        autor:'',
         whatsapp: '',
         instagram: ''
       });
@@ -27,6 +31,10 @@ import styles from '@/components/CreatePost/CreatePost.module.css';
         setDados({
           titulo: '',
           descricao: '',
+          preco: '',
+          status: '',
+          genero: '',
+          autor:'',
           whatsapp: '',
           instagram: ''
         });
@@ -42,6 +50,26 @@ import styles from '@/components/CreatePost/CreatePost.module.css';
         label: 'Descrição',
         name: 'descricao',
         type: 'textarea',
+      },
+      {
+        label: 'Preço',
+        name: 'preco',
+        type: 'text',
+      },
+      {
+        label: 'Status',
+        name: 'status',
+        type: 'text',
+      },
+      {
+        label: 'Gênero',
+        name: 'genero',
+        type: 'text',
+      },
+      {
+        label: 'Autor',
+        name: 'autor',
+        type: 'text',
       },
       {
         label: 'WhatsApp',

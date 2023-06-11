@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FormField from './FormField';
-import styles from '@/components/CreatePost/CreatePost.module.css';
+import styles from '@/components/CreatePostForm/CreatePostForm.module.css';
 
 
   export default function FormApartamento() {

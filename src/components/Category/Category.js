@@ -10,21 +10,29 @@ const roboto = Roboto({
 export default function Category() {
   return (
     <section className={`container ${styles.select}`}>
-      <div className="row">
-        <div className={`col-12  d-flex justify-content-center align-items-center ${styles.select} ${styles.newPost}`}>
-          <span className={`text-center ${styles.buttonText}`}>Criar Anúncio</span>
-        </div>
+      <div className="row link">
+        <Link href="/create-post">
+          <div className={`col-12 d-flex justify-content-center align-items-center ${styles.select} ${styles.newPost}`}>
+            <span className={`text-center ${styles.buttonText}`}>Criar Anúncio</span>
+          </div>
+        </Link>
       </div>
-      <div className="row">
-        <div className={`col-4 d-flex justify-content-center align-items-center ${styles.select} ${styles.apartments}`}>
-          <span id="apartments" className={`text-center ${styles.buttonText}`}>Apartamentos</span>
-        </div>
-        <div className={`col-4 d-flex justify-content-center align-items-center ${styles.select} ${styles.books}`}>
-          <span id="books" className={`text-center ${styles.buttonText}`}>Anúncios</span>
-        </div>
-        <div className={`col-4 d-flex justify-content-center align-items-center ${styles.select} ${styles.others}`}>
-        <span id="others" className={`text-center ${styles.buttonText}`}>Outros</span>
-        </div>
+      <div className="row link">
+        <Link className="col-4" href="/search?var=apartments">
+          <div className={`d-flex justify-content-center align-items-center ${styles.select} ${styles.apartments}`}>
+            <span id="apartments" className={`text-center ${styles.buttonText}`}>Apartamentos</span>
+          </div>
+        </Link>
+        <Link className="col-4" href="/search?var=books">
+          <div className={`d-flex justify-content-center align-items-center ${styles.select} ${styles.books}`}>
+            <span id="books" className={`text-center ${styles.buttonText}`}>Anúncios</span>
+          </div>
+        </Link>
+        <Link className="col-4 " href="/search?var=others">
+          <div className={`d-flex justify-content-center align-items-center ${styles.select} ${styles.others}`}>
+            <span id="others" className={`text-center ${styles.buttonText}`}>Outros</span>
+          </div>
+        </Link>
       </div>
     </section>
   );
