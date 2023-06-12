@@ -16,7 +16,6 @@
 
 
 .newPost {
-  max-width: 550px;
   height: 150px;
   width: 100%;
   min-height: 200px;
@@ -29,7 +28,6 @@
 
 
 .apartments {
-  max-width: 200px;
   height: 200px;
   min-height: 200px;
   border-radius: 2vw 0;
@@ -40,7 +38,6 @@
 }
 
 .others { 
-  max-width: 200px;
   height: 200px;
   min-height: 200px;
   border-radius: 2vw 0;
@@ -51,7 +48,6 @@
 }
 
 .books {
-  max-width: 200px;
   height: 200px;
   min-height: 200px;
   border-radius: 2vw 0;

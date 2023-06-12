@@ -8,6 +8,8 @@ import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Polygon from '@/components/Polygon/Polygon';
 import CreatePostForm from '@/components/CreatePostForm/CreatePostForm';
+import UserTab from '@/components/UserTab/UserTab';
+
 
 // @contents
 import CreatePostContent from '@/contents/CreatePostContent';
@@ -32,6 +34,25 @@ export default function CreatePost() {
         }
     }, [])
 
+    const HandleLogOut = async () => {
+        const res = await fetch(`${process.env.BACK_END_HOST}/logout`, {
+          method: "DELETE",
+          headers: {
+            "Authentication": `Bearer {${localStorage.getItem("token")}}`,
+          },
+        })
+        res.json().then(() => {
+          authContext.setAuthState({
+            token: null,
+            user: null
+          });
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+        })
+        router.push("/login")
+    
+      }
+
     return (
         <>
             <Head>
@@ -40,7 +61,9 @@ export default function CreatePost() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <Polygon />
-            <Header />
+            <Header logged={true}>
+                <UserTab name={authContext.authState.user} image={null} HandleLogOut={HandleLogOut} />
+            </Header>
             <CreatePostContent>
                 <CreatePostForm />
             </CreatePostContent>

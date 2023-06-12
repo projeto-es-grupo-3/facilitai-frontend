@@ -11,8 +11,8 @@ export default function Category() {
   return (
     <section className={`container ${styles.select}`}>
       <div className="row link">
-        <Link href="/create-post">
-          <div className={`col-12 d-flex justify-content-center align-items-center ${styles.select} ${styles.newPost}`}>
+        <Link className="col-12" href="/create-post">
+          <div className={`d-flex justify-content-center align-items-center ${styles.select} ${styles.newPost}`}>
             <span className={`text-center ${styles.buttonText}`}>Criar Anúncio</span>
           </div>
         </Link>
