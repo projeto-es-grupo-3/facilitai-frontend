@@ -1,0 +1,53 @@
+.inputField input, .inputField textarea  {
+    width: 100%;
+    color: #FFFFFF;
+    padding: 5px;
+    border: 0;
+    background-color: #2E1F74;
+    border-bottom: 0.240366px solid #FFFFFF;
+    outline: 0;
+  }
+  .inputField {
+    align-items: center;
+    width: 80%;
+    position: relative;
+    margin: 30px 0;
+  }
+  .inputField label {
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    color: #FFFFFF;
+    cursor: text;
+    transition: 0.5s ease-in-out ;
+  }
+  .inputField input, .inputField textarea {
+    resize: none;
+    width: 100%;
+    color: #FFFFFF;
+    padding: 4px;
+    border: 0;
+    background-color: #2E1F74;
+    border-bottom: 0.240366px solid #FFFFFF;
+    outline: 0;
+  }
+  
+  .inputField i {
+    position: absolute;
+    right: 0;
+  }
+  
+  .inputField input:focus, .inputField textarea:focus {
+    border-bottom: 0.240366px solid #30ABED;
+  }
+  
+  .inputField input:focus ~ label, .inputField input:valid ~ label {
+    transform: translateY(-24px);
+    font-size: 12px;
+  }
+  .inputField textarea:focus ~ label, .inputField textarea:valid ~ label {
+    transform: translateY(-60px);
+    font-size: 12px;
+  }
+  
