@@ -10,7 +10,6 @@ import Polygon from '@/components/Polygon/Polygon';
 import CreatePostForm from '@/components/CreatePostForm/CreatePostForm';
 import UserTab from '@/components/UserTab/UserTab';
 
-
 // @contents
 import CreatePostContent from '@/contents/CreatePostContent';
 
@@ -51,7 +50,26 @@ export default function CreatePost() {
         })
         router.push("/login")
     
-      }
+    }
+
+    const SubmitPost = async (data) => {
+        
+        const res = await fetch(`${process.env.BACK_END_HOST}/create_ad`, {
+            method: "POST",
+            headers: {
+                "Authentication": `Bearer {${localStorage.getItem("token")}}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        })
+       res.json().then((data) => {
+        return data.access_token
+        }).then((token) => {
+            authContext.setAuthState({token,user})
+        })
+       
+        router.push("/dashboard")
+    }
 
     return (
         <>
@@ -65,7 +83,7 @@ export default function CreatePost() {
                 <UserTab name={authContext.authState.user} image={null} HandleLogOut={HandleLogOut} />
             </Header>
             <CreatePostContent>
-                <CreatePostForm />
+                <CreatePostForm SubmitPost={SubmitPost}/>
             </CreatePostContent>
             <Footer />
         </>

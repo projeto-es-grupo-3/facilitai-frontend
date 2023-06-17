@@ -1,9 +1,14 @@
 import Head from 'next/head';
+import React from "react";
+
+
+
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Polygon from '@/components/Polygon/Polygon';
-import React from "react";
-import AllPostsContent from '@/contents/AllPostsContent';
+import PostsContent from '@/contents/PostsContent';
+import Post from '@/components/Post/Post';
+
 
 export default function AllPosts() {
     return (
@@ -15,7 +20,23 @@ export default function AllPosts() {
             </Head>
             <Polygon/>
             <Header />
-            <AllPostsContent/>
+            <PostsContent>
+                <Post
+                    category="apartaments"
+                    titlePost="Título do Post"
+                    description="Descrição do "
+                    advertiser="Anunciante"
+                    imgUser={require('../../public/images/perfil.png')}
+                    imgPost={require('../../public/images/imgApartamento.jpg')}
+                    whatsapp="1234567890"
+                    email="exemplo@exemplo.com"
+                    price="R$ 100,00"
+                    address="Endereço do Post"
+                    area="100 m²"
+                    bedrooms="2 quartos"
+                    
+                />
+            </PostsContent>
             <Footer />
         </>
     )

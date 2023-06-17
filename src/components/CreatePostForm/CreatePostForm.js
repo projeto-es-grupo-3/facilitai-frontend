@@ -2,25 +2,56 @@ import React, { useState, useRef } from 'react';
 import { Roboto } from 'next/font/google';
 import styles from '@/components/CreatePostForm/CreatePostForm.module.css';
 import SelectCategory from '@/components/CreatePostForm/SelectCategory';
-import FormApartamento from '@/components/CreatePostForm/FormApartamento';
-import FormGeral from '@/components/CreatePostForm/FormGeneric';
-import FormLivro from '@/components/CreatePostForm/FormBook';
 import Image from 'next/image';
 import predio from '../../../public/images/predio.png';
 import capelo from '../../../public/images/capelo.png';
 import livro from '../../../public/images/livro.png';
 import ImageUploader from '@/components/CreatePostForm/ImageUploader';
+import FormField from '../FormField/FormField';
+import { MdAttachMoney, MdHome, MdOutlineBedroomChild, MdOutlineTitle, MdOutlineDescription } from 'react-icons/md';
+import { IoLogoWhatsapp } from 'react-icons/io';
+import { SiGmail } from 'react-icons/si';
+
 
 const roboto = Roboto({
   weight: '400',
   subsets: ['latin'],
 });
 
-export default function CreatePostForm() {
+export default function CreatePostForm({SubmitPost, children}) {
+
+  let inputFields = [{}]
+  let img;
+  
   const [category, setCategory] = useState(2);
   const [selectedImage, setSelectedImage] = useState('');
-  const fileInputRef = useRef(null);
+  const [apto, setApto] = useState({
+    titulo: '',
+    descricao: '',
+    preco: '',
+    area: '',
+    endereco: '',
+    numeroQuartos: '',
+    whatsapp: '',
+    gmail: ''
+  });
+  const [book, setBook] = useState({
+    titulo: '',
+    descricao: '',
+    preco: '',
+    status: '',
+    genero: '',
+    autor:'',
+    whatsapp: '',
+    gmail: ''
+  });
 
+  const HandleSubmit = (e) => {
+    e.preventDefault()
+    if (category === 1) {
+      console.log(apto);
+    }
+  }
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
   };
@@ -29,39 +60,183 @@ export default function CreatePostForm() {
     setSelectedImage(imageData);
   };
 
-  let formComponent;
-  let img;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (category === 1) {
+      setApto((prevDados) => ({
+        ...prevDados,
+        [name]: value
+      }));
+    } if (category === 2) {
+
+
+    }
+  };
+  
   if (category === 1) {
-    formComponent = <FormApartamento />;
+
+    inputFields = [
+      {
+        label: 'Título',
+        name: 'titulo',
+        type: 'text',
+        icon: <MdOutlineTitle color='#fff' width={30} height={30}/>
+      },
+      {
+        label: 'Descrição',
+        name: 'descricao',
+        type: 'textarea',
+        icon: <MdOutlineDescription color='#fff' width={30} height={30}/>
+      },
+      {
+        label: 'Preço',
+        name: 'preco',
+        type: 'text',
+        icon: <MdAttachMoney color='#fff' width={30} height={30}/>
+      },
+      {
+        label: 'Área',
+        name: 'area',
+        type: 'text',
+        icon: ''
+      },
+      {
+        label: 'Endereço',
+        name: 'endereco',
+        type: 'text',
+        icon: <MdHome color='#fff' width={30} height={30}/>
+  
+      },
+      {
+        label: 'Número de quartos',
+        name: 'numeroQuartos',
+        type: 'text',
+        icon: <MdOutlineBedroomChild color='#fff' width={30} height={30}/>
+      },
+      {
+        label: 'WhatsApp',
+        name: 'whatsapp',
+        type: 'text',
+        icon: <IoLogoWhatsapp color='#fff' width={30} height={30}/>
+      },
+      {
+        label: 'Gmail',
+        name: 'gmail',
+        type: 'text',
+        icon: <SiGmail color='#fff' width={30} height={30}/>
+      },
+    ];
     img = (
-      <div className={`${styles.divImg} d-flex justify-content-center align-items-center`}>
         <Image className={`${styles.img}`} alt='' src={predio} />
-      </div>
     );
   } else if (category === 2) {
-    formComponent = <FormGeral />;
+    inputFields = [
+      {
+        label: 'Título',
+        name: 'titulo',
+        type: 'text',
+      },
+      {
+        label: 'Descrição',
+        name: 'descricao',
+        type: 'textarea',
+      },
+      {
+        label: 'Preço',
+        name: 'preco',
+        type: 'text',
+      },
+      {
+        label: 'Status',
+        name: 'status',
+        type: 'text',
+      },
+      {
+        label: 'Gênero',
+        name: 'genero',
+        type: 'text',
+      },
+      {
+        label: 'Autor',
+        name: 'autor',
+        type: 'text',
+      },
+      {
+        label: 'WhatsApp',
+        name: 'whatsapp',
+        type: 'text',
+      },
+      {
+        label: 'Gmail',
+        name: 'gmail',
+        type: 'text',
+      },
+    ];
     img = (
-      <div className={`${styles.divImg} d-flex justify-content-center align-items-center`}>
-        <Image className={`${styles.img}`} alt='' src={capelo} />
-      </div>
+        <Image className={`${styles.img}`} alt='' src={livro} />
     );
   } else if (category === 3) {
-    formComponent = <FormLivro />;
+
+    inputFields = [
+      {
+        label: 'Título',
+        name: 'titulo',
+        type: 'text',
+      },
+      {
+        label: 'Descrição',
+        name: 'descricao',
+        type: 'textarea',
+      },
+      {
+        label: 'WhatsApp',
+        name: 'whatsapp',
+        type: 'text',
+      },
+      {
+        label: 'Instagram',
+        name: 'instagram',
+        type: 'text',
+      },
+    ];
+    
     img = (
-      <div className={`${styles.divImg} d-flex justify-content-center align-items-center`}>
-        <Image className={`${styles.img}`} alt='' src={livro} />
-      </div>
+        <Image className={`${styles.img}`}  alt='' src={capelo} />
     );
   }
 
   return (
-    <div className={`${styles.createPost}`}>
+    <div className="row">
       <SelectCategory category={category} onCategoryChange={handleCategoryChange} />
-      <form className={`${styles.form} ${roboto.className} d-flex justify-content-start`}>
-        <ImageUploader selectedImage={selectedImage} onImageSelect={handleImageSelect} />
-        {formComponent}
-        <div className='d-flex justify-content-center align-items-center'>{img}</div>
-      </form>
+      
+      <div className="col-12 bg-custom1 rounded mb-5">
+        <div className="row">
+          <div className="col-12 order-0 order-md-0 col-md-4 ">
+            <ImageUploader selectedImage={selectedImage} onImageSelect={handleImageSelect} />
+          </div>
+          <div className="col-12 order-2 order-md-1 col-md-5">
+              <div className="row d-flex justify-content-center ">
+                    <form className={`d-flex flex-column align-items-center ${styles.form}`}>
+                      {inputFields.map((field) => (
+                          <FormField
+                            label={field.label}
+                            name={field.name}
+                            type={field.type}
+                            value={category === "1" ? apto[field.name] : book[field.name]
+                            }
+                            icon={field.icon}
+                            onChange={handleChange}
+                          />
+                      ))}
+                  </form>
+                  <button className={`${styles.button} ${roboto.className} mb-4`} onClick={e => HandleSubmit(e)}>Criar</button>
+              </div>
+          </div>
+          <div className="col-12 order-1 order-md-2 col-md-3 d-flex justify-content-center align-items-center">
+            {img}
+          </div>
+        </div>
+      </div> 
     </div>
   );
 }

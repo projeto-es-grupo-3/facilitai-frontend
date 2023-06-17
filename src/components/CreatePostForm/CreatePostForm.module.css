@@ -1,63 +1,41 @@
-.button{
-    font-size: 50px;
-    margin-left: 2%;
-    margin-bottom: 5px;
-    color: #fff;
-    background: #2E1F74;
-    border-radius: 40px;
-    }
-    
-    
-.button:hover{
-    background-color: #509fad;
+.selectImage {
+  background-color: rgba(217, 217, 217, 0.2);
 }
 
-.createPost{
-    width: 1073px;
-    height: 363px;
-    border-radius: 40px 0px;
-    margin-bottom: 35%;
+.img{
+  width: 120px;
+  height: 120px;
 }
-
-.form{
-    width: 1073px;
-    height: 363px;
-
-    background: #2E1F74;
-    border-radius: 40px;
-}
-
-.selectImage{
-    width: 438.29px;
-    height: 363px;
-    background-Color: rgba(217, 217, 217, 0.2);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 40px 0px 0px 40px; 
-}
-
-.formWrapper {
-    color: #fff;
-    max-height: 400px; 
-    overflow-y: auto;
-    width: 290px;
-    margin: 1%;
-  }
   
-  .formScrollable {
-    max-height: 100%;
-  }
+.imgSelect { height: 100%; }
 
-  .divImg{
-    margin-left: 70px;
-    width: 200px;
-    height: 150px;
-    background: rgba(217, 217, 217, 0.2);
-    border-radius: 23px;
-  }
+.form {
+  max-height:400px;
+  overflow-y:auto
+}
 
-  .img{
-    width: 120px;
+.button {
+  width: 80%;
+  text-transform: uppercase;
+  height: 50px;
+  background-color: #30ABED;
+  color: #FFFFFF;
+  border: 0;
+  transition: background-color 1s ease;
+  transition: color 1s ease;
+  border-radius: 10px;
+}
+.button:hover {
+  background-color: #F7F7F7;
+  color: #2E1F74;
+  box-shadow:  2px 2px 2px 1px rgba(36, 36, 36, 0.9);
+}
+@media screen and (max-width : 576px) {
+  .imgSelect { 
     height: 120px;
+   }
+  .form {
+      max-height:400px;
+      width: 100%;
   }
+}

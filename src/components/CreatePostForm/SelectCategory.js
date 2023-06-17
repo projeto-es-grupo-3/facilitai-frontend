@@ -14,16 +14,13 @@ const roboto = Roboto({
     }
   
     return (
-      <div className="d-flex justify-content-end" style={{ width: '1073px' }}>
-        <button className={`btn btn-md btn-block ${styles.button} ${roboto.className}`} onClick={() => handleChange(1)}>
-          <div className="mx-auto">Apartamento</div>
-        </button>
-        <button className={`btn btn-md btn-block ${styles.button} ${roboto.className}`} onClick={() => handleChange(2)}>
-          <div className="mx-auto">Geral</div>
-        </button>
-        <button className={`btn btn-md btn-block ${styles.button} ${roboto.className}`} onClick={() => handleChange(3)}>
-          <div className="mx-auto">Livro</div>
-        </button>
+      <div className="col-12 mb-3">
+        <div className="d-flex flex-column flex-md-row justify-content-evenly">
+        <span className={` btn btn-md btn-block me-2 mb-2 bg-custom1 text-custom3 fs-4 ${roboto.className}`} onClick={() => handleChange(1)} >Apartamento</span>
+        <span className={` btn btn-md btn-block me-2 mb-2 bg-custom1 text-custom3 fs-4 ${roboto.className}`} onClick={() => handleChange(2)} >Livro</span>
+        <span className={` btn btn-md btn-block me-2 mb-2 bg-custom1 text-custom3 fs-4 ${roboto.className}`} onClick={() => handleChange(3)} >Outros</span>
+        </div>
+        
       </div>
     )
   }

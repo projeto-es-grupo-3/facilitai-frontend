@@ -19,11 +19,11 @@ const ImageUploader = ({ onImageSelect, selectedImage }) => {
   };
   
   return (
-    <div>
+    <div className={`row ${styles.imgSelect}`}>
       <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleImageChange} />
       <button
         type="button"
-        className={`${styles.selectImage}`}
+        className={`col-12 h-100 ${styles.selectImage}`}
         style={{ backgroundImage: `url(${selectedImage})` }}
         onClick={handleButtonClick}
       />
@@ -39,10 +39,7 @@ const ParentComponent = () => {
   };
 
   return (
-    <div>
-      {/* Renderiza o componente ImageUploader com a prop selectedImage */}
       <ImageUploader selectedImage={selectedImage} onImageSelect={handleImageSelect} />
-    </div>
   );
 };
 

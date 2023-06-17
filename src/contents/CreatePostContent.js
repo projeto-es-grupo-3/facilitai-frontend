@@ -7,18 +7,22 @@ const roboto = Roboto({
 export default function CreatePostContent({ children }) {
 
     return (
-        <main>
-            <section className="row justify-content-center container-fluid">
-                <div className="d-flex flex-column justify-content-center align-items-center">
+        <main className="container-xl mb-5 align-items-center">
+            <section className="row">
+                <div className="col-12 d-flex justify-content-center">
                     <h1 className={`ms-2 mt-5 text-md-start fw-semibold text-custom1 ${roboto.className}`}>
                         Crie seu Anúncio aqui!
                     </h1>
-                    <h1 className={`ms-2 mt-5 text-md-start fw-semibold text-custom1 ${roboto.className}`}>
-                        Lembre de selecionar a categoria adequada e uma boa imagem
-                    </h1>
+                </div>
+                <div className="col-12">
                     {
                         children
                     }
+                </div>
+                <div className="col-12 d-flex justify-content-center">
+                    <h4 className={`ms-2 mt-5 text-md-start fw-semibold text-custom1 ${roboto.className}`}>
+                        * Lembre de selecionar a categoria adequada e uma boa imagem
+                    </h4>
                 </div>
             </section>
         </main>
