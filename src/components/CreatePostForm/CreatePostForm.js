@@ -12,7 +12,7 @@ import ImageUploader from '@/components/CreatePostForm/ImageUploader';
 import FormField from '@/components/FormField/FormField';
 
 // @react-icons
-import { MdAttachMoney,MdHome,MdOutlineBedroomChild, MdOutlineTitle, MdOutlineDescription, MdApartment} from 'react-icons/md';
+import { MdAttachMoney, MdHome, MdOutlineBedroomChild, MdOutlineTitle, MdOutlineDescription, MdApartment } from 'react-icons/md';
 import { GiDramaMasks } from 'react-icons/gi';
 
 
@@ -126,17 +126,18 @@ export default function CreatePostForm({ SubmitPost }) {
   let img;
   const [category, setCategory] = useState(1);
   const [selectedImage, setSelectedImage] = useState('');
+  const [file, setFile] = useState();
   const [data, setData] = useState({
-    apto :{
+    apto: {
       titulo: "",
-      descricao:"",
+      descricao: "",
       preco: "",
       endereco: "",
-      area:"",
-      comodos:"",
+      area: "",
+      comodos: "",
       categoria: "apartamento"
-    }, 
-    book:{
+    },
+    book: {
       titulo: "",
       tituloLivro: "",
       descricao: "",
@@ -145,25 +146,49 @@ export default function CreatePostForm({ SubmitPost }) {
       categoria: "livro",
       aceitaTroca: ""
     },
-    other:{
+    other: {
       titulo: "",
       descricao: "",
       preco: "",
     }
-  })
- 
+  });
+
   const HandleSubmit = (e) => {
     e.preventDefault();
     let submit = {}
     if (category === 1) {
-      submit = data.apto
+
+      submit = {
+        post: {
+          titulo: data.apto.titulo,
+          descricao: data.apto.descricao,
+          preco: parseFloat(data.apto.preco),
+          endereco: data.apto.endereco,
+          area: parseInt(data.apto.area),
+          comodos: parseInt(data.apto.comodos),
+          categoria: data.apto.categoria
+        },
+        image:file
+      }
+
     } else if (category === 2) {
-      submit = data.book
+      submit = {
+        post: {
+        titulo: data.book.titulo,
+        tituloLivro: data.book.tituloLivro,
+        descricao: data.book.descricao,
+        genero: data.book.genero,
+        preco: parseFloat(data.book.titulo),
+        categoria: data.book.categoria,
+        aceitaTroca: data.book.aceitaTroca
+      },
+      image:file
+    }
     } else {
       submit = data.other
     }
 
-    if (submit != {}){
+    if (submit != {}) {
       SubmitPost(submit);
     }
   }
@@ -183,7 +208,7 @@ export default function CreatePostForm({ SubmitPost }) {
         ...data,
         apto: {
           ...data.apto,
-          [name]:value
+          [name]: value
         }
       }))
     } if (category === 2) {
@@ -191,7 +216,7 @@ export default function CreatePostForm({ SubmitPost }) {
         ...data,
         book: {
           ...data.book,
-          [name]:value
+          [name]: value
         }
       }))
     } else {
@@ -199,7 +224,7 @@ export default function CreatePostForm({ SubmitPost }) {
         ...data,
         other: {
           ...data.other,
-          [name]:value
+          [name]: value
         }
       }))
     }
@@ -225,29 +250,16 @@ export default function CreatePostForm({ SubmitPost }) {
       <div className="col-12 bg-custom1 rounded mb-5">
         <div className="row">
           <div className="col-12 order-0 order-md-0 col-md-4 ">
-            <ImageUploader selectedImage={selectedImage} onImageSelect={handleImageSelect} />
+            <ImageUploader selectedImage={selectedImage} onImageSelect={handleImageSelect} setFile={setFile}/>
           </div>
           <div className="col-12 order-2 order-md-1 col-md-5">
             <div className="row d-flex justify-content-center ">
               <form className={`d-flex flex-column align-items-center ${styles.form}`}>
                 {
-                  category === 1 ? 
+                  category === 1 ?
                     aptoInputFields.map((field) => (
-                      <>
                       <FormField
-                        key={"apto"+field.name}
-                        label={field.label}
-                        name={field.name}
-                        type={field.type}
-                        icon={field.icon}
-                        onChange={handleChange}
-                      />
-                      </>
-                    ))
-                  : category === 2 ? 
-                    bookInputFields.map((field) => (
-                      <FormField
-                        key={"book"+field.name}
+                        key={"apto" + field.name}
                         label={field.label}
                         name={field.name}
                         type={field.type}
@@ -255,17 +267,28 @@ export default function CreatePostForm({ SubmitPost }) {
                         onChange={handleChange}
                       />
                     ))
-                  : 
-                  otherInputFields.map((field) => (
-                    <FormField
-                      key={"other"+field.name}
-                      label={field.label}
-                      name={field.name}
-                      type={field.type}
-                      icon={field.icon}
-                      onChange={handleChange}
-                    />
-                  ))
+                    : category === 2 ?
+                      bookInputFields.map((field) => (
+                        <FormField
+                          key={"book" + field.name}
+                          label={field.label}
+                          name={field.name}
+                          type={field.type}
+                          icon={field.icon}
+                          onChange={handleChange}
+                        />
+                      ))
+                      :
+                      otherInputFields.map((field) => (
+                        <FormField
+                          key={"other" + field.name}
+                          label={field.label}
+                          name={field.name}
+                          type={field.type}
+                          icon={field.icon}
+                          onChange={handleChange}
+                        />
+                      ))
                 }
               </form>
               <button className={`${styles.button} ${roboto.className} mb-4`} onClick={e => HandleSubmit(e)}>Criar</button>

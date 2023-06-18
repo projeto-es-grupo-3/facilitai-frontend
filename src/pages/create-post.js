@@ -35,40 +35,52 @@ export default function CreatePost() {
 
     const HandleLogOut = async () => {
         const res = await fetch(`${process.env.BACK_END_HOST}/logout`, {
-          method: "DELETE",
-          headers: {
-            "Authentication": `Bearer {${localStorage.getItem("token")}}`,
-          },
+            method: "DELETE",
+            headers: {
+                "Authentication": `Bearer ${localStorage.getItem("token")}`,
+            },
         })
         res.json().then(() => {
-          authContext.setAuthState({
-            token: null,
-            user: null
-          });
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
+            authContext.setAuthState({
+                token: null,
+                user: null
+            });
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
         })
         router.push("/login")
-    
+
     }
 
     const SubmitPost = async (data) => {
-        
-        const res = await fetch(`${process.env.BACK_END_HOST}/create_ad`, {
+        console.log(data);
+        let image = data.image;
+
+        const res = await fetch(`${process.env.BACK_END_HOST}/create-ad`, {
             method: "POST",
             headers: {
-                "Authentication": `Bearer {${localStorage.getItem("token")}}`,
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data.post)
         })
-       res.json().then((data) => {
-        return data.access_token
-        }).then((token) => {
-            authContext.setAuthState({token,user})
+        res.json().then(async (data) => {
+            const imageData = new FormData();
+            imageData.append("ad_id", data.ad_id);
+            imageData.append("ad_img", image);
+            
+            const res = await fetch(`${process.env.BACK_END_HOST}/upload-image`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                },
+                body: imageData
+            })
+            res.json().then(async (data) => {
+                router.push("/dashboard")
+            })
         })
-       
-        router.push("/dashboard")
+        
     }
 
     return (
@@ -83,7 +95,7 @@ export default function CreatePost() {
                 <UserTab name={authContext.authState.user} image={null} HandleLogOut={HandleLogOut} />
             </Header>
             <CreatePostContent>
-                <CreatePostForm SubmitPost={SubmitPost}/>
+                <CreatePostForm SubmitPost={SubmitPost} />
             </CreatePostContent>
             <Footer />
         </>
