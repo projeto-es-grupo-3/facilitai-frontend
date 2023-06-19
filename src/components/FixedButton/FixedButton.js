@@ -25,7 +25,7 @@ export default function FixedButton() {
                             <div className="row">
                                 <div className="col-3"><i><BsBuildingsFill /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5 text-custom3" href="/search?var=apartment">
+                                    <Link className="fs-5 text-custom3" href="/posts/search-apartments">
                                         <span>Apartamentos</span>
                                     </Link>
                                 </div>
@@ -35,7 +35,7 @@ export default function FixedButton() {
                             <div className="row">
                                 <div className="col-3"><i><HiOutlineBookOpen /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5 text-custom3" href="/search?var=books">
+                                    <Link className="fs-5 text-custom3" href="/posts/search-books">
                                         <span>Livros</span>
                                     </Link>
                                 </div>

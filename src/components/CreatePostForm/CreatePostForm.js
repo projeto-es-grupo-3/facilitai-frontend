@@ -77,6 +77,12 @@ export default function CreatePostForm({ SubmitPost }) {
       icon: <MdOutlineTitle color='#fff' width={30} height={30} />
     },
     {
+      label: 'Autor do Livro',
+      name: 'autor',
+      type: 'text',
+      icon: <MdOutlineTitle color='#fff' width={30} height={30} />
+    },
+    {
       label: 'Descrição',
       name: 'descricao',
       type: 'textarea',
@@ -140,6 +146,7 @@ export default function CreatePostForm({ SubmitPost }) {
     book: {
       titulo: "",
       tituloLivro: "",
+      autor: "",
       descricao: "",
       genero: "",
       preco: "",
@@ -176,6 +183,7 @@ export default function CreatePostForm({ SubmitPost }) {
         post: {
         titulo: data.book.titulo,
         tituloLivro: data.book.tituloLivro,
+        autor:data.book.autor,
         descricao: data.book.descricao,
         genero: data.book.genero,
         preco: parseFloat(data.book.titulo),

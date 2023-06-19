@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
@@ -9,8 +9,6 @@ import Footer from '@/components/Footer/Footer';
 import Polygon from '@/components/Polygon/Polygon';
 import CreatePostForm from '@/components/CreatePostForm/CreatePostForm';
 import UserTab from '@/components/UserTab/UserTab';
-
-// @contents
 import CreatePostContent from '@/contents/CreatePostContent';
 
 // @contexts
@@ -53,7 +51,6 @@ export default function CreatePost() {
     }
 
     const SubmitPost = async (data) => {
-        console.log(data);
         let image = data.image;
 
         const res = await fetch(`${process.env.BACK_END_HOST}/create-ad`, {
@@ -76,7 +73,7 @@ export default function CreatePost() {
                 },
                 body: imageData
             })
-            res.json().then(async (data) => {
+            res.json().then(async () => {
                 router.push("/dashboard")
             })
         })
