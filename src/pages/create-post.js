@@ -10,6 +10,7 @@ import Polygon from '@/components/Polygon/Polygon';
 import CreatePostForm from '@/components/CreatePostForm/CreatePostForm';
 import UserTab from '@/components/UserTab/UserTab';
 import CreatePostContent from '@/contents/CreatePostContent';
+import FixedButton from '@/components/FixedButton/FixedButton';
 
 // @contexts
 import { AuthContext } from "@/contexts/AuthContext";
@@ -47,11 +48,15 @@ export default function CreatePost() {
             localStorage.removeItem("user");
         })
         router.push("/login")
-
     }
 
     const SubmitPost = async (data) => {
-        let image = data.image;
+        
+        let image;
+        if (data.image) {
+            image = data.image
+        }
+        console.log(data);
 
         const res = await fetch(`${process.env.BACK_END_HOST}/create-ad`, {
             method: "POST",
@@ -61,23 +66,25 @@ export default function CreatePost() {
             },
             body: JSON.stringify(data.post)
         })
-        res.json().then(async (data) => {
-            const imageData = new FormData();
-            imageData.append("ad_id", data.ad_id);
-            imageData.append("ad_img", image);
-            
-            const res = await fetch(`${process.env.BACK_END_HOST}/upload-image`, {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
-                },
-                body: imageData
+        if(data.image) {
+            res.json().then(async (data) => {
+                console.log(data);
+                const imageData = new FormData();
+                imageData.append("ad_id", data.ad_id);
+                if (data.image) {
+                    imageData.append("ad_img", image);
+                }
+                
+                const res = await fetch(`${process.env.BACK_END_HOST}/upload-image`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                    },
+                    body: imageData
+                })
             })
-            res.json().then(async () => {
-                router.push("/dashboard")
-            })
-        })
-        
+        }
+        router.push("/dashboard")
     }
 
     return (
@@ -94,6 +101,7 @@ export default function CreatePost() {
             <CreatePostContent>
                 <CreatePostForm SubmitPost={SubmitPost} />
             </CreatePostContent>
+            <FixedButton/>
             <Footer />
         </>
     )

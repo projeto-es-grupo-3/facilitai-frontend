@@ -22,11 +22,11 @@ const roboto = Roboto({
     }
 
     return (
-      <button className={`row ${styles.button} ${roboto.className}`}>
+      <button className={`row mt-3 ${styles.button} ${roboto.className}`}>
         <div className="col-2">
           <Image className={`${styles.image}`} src={imagem} alt="post" />
         </div>
-        <div className="col-10">
+        <div className="col-10 mt-4">
           <span className={`${styles.textButtonPost} text-wrap`}>{textButton}</span>
         </div>
       </button>

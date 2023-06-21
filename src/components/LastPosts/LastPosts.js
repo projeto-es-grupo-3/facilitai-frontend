@@ -19,7 +19,7 @@ export default function LastPosts({children}) {
                     children
                 }
             </div>
-            <div className="col-12 d-flex flex-column justify-content-start align-items-center">
+            <div className="col-12 d-flex flex-column justify-content-start align-items-center mt-3">
                 <button className={`${styles.atualizar}`}>Atualizar Anúncios</button>
             </div>
         </div>

@@ -150,8 +150,8 @@ export default function CreatePostForm({ SubmitPost }) {
       descricao: "",
       genero: "",
       preco: "",
+      aceitaTroca: "",
       categoria: "livro",
-      aceitaTroca: ""
     },
     other: {
       titulo: "",
@@ -186,9 +186,9 @@ export default function CreatePostForm({ SubmitPost }) {
         autor:data.book.autor,
         descricao: data.book.descricao,
         genero: data.book.genero,
-        preco: parseFloat(data.book.titulo),
+        preco: parseFloat(data.book.preco),
         categoria: data.book.categoria,
-        aceitaTroca: data.book.aceitaTroca
+        aceitaTroca: true
       },
       image:file
     }

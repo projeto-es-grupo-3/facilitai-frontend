@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { useState, useContext, useEffect } from  'react';
 
 // @components
@@ -17,7 +17,7 @@ import { AuthContext } from "@/contexts/AuthContext";
 export default function Posts() {
 
     const [posts, setPosts] = useState();
-    const { query } = useRouter()
+    const router = useRouter();
     const authContext = useContext(AuthContext);
 
     useEffect(() => {
@@ -33,14 +33,14 @@ export default function Posts() {
 
         const GetPosts = async () => {
             var raw;
-            if (query.id === "search-apartments") {
+            if (router.query.id === "search-apartments") {
                 raw  = JSON.stringify({
                     "endereco": null,
                     "valor_min": null,
                     "valor_max": null,
                     "num_comodos": null
                   }); 
-            } else if (query.id === "search-books") {
+            } else if (router.query.id === "search-books") {
                 raw  = JSON.stringify({
                     "nome_livro": null,
                     "nome_autor": null,
@@ -50,7 +50,7 @@ export default function Posts() {
                   }); 
             }
     
-            const res = await fetch(`${process.env.BACK_END_HOST}/${query.id}`, {
+            const res = await fetch(`${process.env.BACK_END_HOST}/${router.query.id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -59,11 +59,11 @@ export default function Posts() {
                 body:raw
             })
             const data = await res.json();
-            setPosts(data)
+            const reversed = [...data].reverse(); 
+            setPosts(reversed)
         }
         GetPosts();
-
-    }, []);
+    }, [router.query]);
 
     const HandleLogOut = async () => {
         const res = await fetch(`${process.env.BACK_END_HOST}/logout`, {
@@ -81,7 +81,6 @@ export default function Posts() {
             localStorage.removeItem("user");
         })
         router.push("/login")
-
     }
 
     return (
@@ -97,17 +96,12 @@ export default function Posts() {
             </Header>
             <PostsContent>
                 {
-                    posts?.map((c) => (
+                    posts?.filter((item, idx) => idx < 7).map((c, index) =>(
                         <Post
-                        category="apartaments"
-                        titlePost={c.titulo}
-                        description={c.descricao}
-                        advertiser={c.anunciante}
-                        price={c.preco}
-                        address={c.endereco}
-                        area={c.area}
-                        bedrooms={c.comodos}
-                    />))      
+                            key={router.query.id+index}
+                            category={router.query.id}
+                            data={c}
+                        />))
                 }
             </PostsContent>
             <FixedButton/>
