@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Roboto } from 'next/font/google';
 import styles from '@/components/FormField/FormField.module.css';
 
@@ -7,19 +7,26 @@ const roboto = Roboto({
     subsets: ['latin'],
   });
 
-const FormField = ({ label, name, type, value, icon, onChange }) => {
-    return (
+const FormField = ({ label, name, type, icon, onChange }) => {
 
+  const [field, setField] = useState("")
+
+  const handleChange = (e) => {
+    setField(e.target.value);
+    onChange(e)
+  }
+  return (
       <div className={`${styles.inputField}`}>
                 {type === 'textarea' ? (
                   <textarea
                     required
                     id={label}
                     name={name}
-                    onChange={e => onChange(e)}
-                    />) :  <input type={type}  required id={label} name={name} onChange={e => onChange(e)} />
+                    value={field}
+                    onChange={e => handleChange(e)}
+                    />) :  <input type={type} required id={name} name={name} value={field} onChange={e => handleChange(e)} />
                 }
-                <label className={roboto.className} htmlFor={label}>{label}</label>
+                <label className={roboto.className} htmlFor={name}>{label}</label>
               {
                 icon == "" ? <></> :<i>{icon}</i>
               }                
@@ -27,25 +34,3 @@ const FormField = ({ label, name, type, value, icon, onChange }) => {
       );
     }
 export default FormField;
-
-// <div className={`${roboto.className} form-group mr-3`}>
-//           <label htmlFor={name} className="mr-1">{label}:</label>
-//           {type === 'textarea' ? (
-//             <textarea
-//               className="form-control"
-//               id={name}
-//               name={name}
-//               value={value}
-//               onChange={onChange}
-//             />
-//           ) : (
-//             <input
-//               type={type}
-//               className="form-control"
-//               id={name}
-//               name={name}
-//               value={value}
-//               onChange={onChange}
-//             />
-//           )}
-//         </div>

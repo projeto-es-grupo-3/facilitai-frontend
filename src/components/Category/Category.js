@@ -1,6 +1,7 @@
 import styles from '@/components/Category/Category.module.css';
 import Link from 'next/link';
 import { Roboto } from 'next/font/google';
+import { useRouter } from 'next/router';
 
 const roboto = Roboto({
   weight: '700',
@@ -8,6 +9,19 @@ const roboto = Roboto({
 });
 
 export default function Category() {
+
+  const router  = useRouter();
+
+  const handlePush = (e, num) => {
+    e.preventDefault()
+    if (num===1) {
+      router.push("/posts/search-apartments")
+
+    } else if (num===2) {
+      router.push("/posts/search-books")
+    }
+}
+
   return (
     <section className={`container ${styles.select}`}>
       <div className="row link">
@@ -18,14 +32,14 @@ export default function Category() {
         </Link>
       </div>
       <div className="row link">
-        <Link className="col-4" href="/search?var=apartments">
+        <Link className="col-4" href="" onClick={e => handlePush(e, 1)}>
           <div className={`d-flex justify-content-center align-items-center ${styles.select} ${styles.apartments}`}>
             <span id="apartments" className={`text-center ${styles.buttonText}`}>Apartamentos</span>
           </div>
         </Link>
-        <Link className="col-4" href="/search?var=books">
+        <Link className="col-4" href="" onClick={e => handlePush(e, 2)} >
           <div className={`d-flex justify-content-center align-items-center ${styles.select} ${styles.books}`}>
-            <span id="books" className={`text-center ${styles.buttonText}`}>Anúncios</span>
+            <span id="books" className={`text-center ${styles.buttonText}`}>Livros</span>
           </div>
         </Link>
         <Link className="col-4 " href="/search?var=others">

@@ -1,6 +1,7 @@
 import styles from '@/components/FixedButton/FixedButton.module.css';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 // @react-icons
 import { FiPlus } from 'react-icons/fi';
@@ -10,7 +11,18 @@ import { HiOutlineBookOpen } from 'react-icons/hi';
 
 export default function FixedButton() {
 
-    const [boxOpen, setBoxOpen] = useState(false)
+    const [boxOpen, setBoxOpen] = useState(false);
+    const router  = useRouter();
+
+    const handlePushApto = (e) => {
+        e.preventDefault()
+        router.push("/posts/search-apartments")
+    }
+
+    const handlePushBook = (e) => {
+        e.preventDefault()
+        router.push("/posts/search-books")
+    }
 
     return (
         <div className={`bg-custom4 d-lg-none d-flex justify-content-center align-items-center ${boxOpen ? styles.actionButtonActivated : styles.actionButton} `} onClick={() => setBoxOpen(!boxOpen)}>
@@ -25,7 +37,7 @@ export default function FixedButton() {
                             <div className="row">
                                 <div className="col-3"><i><BsBuildingsFill /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5 text-custom3" href="/search?var=apartment">
+                                    <Link className="fs-5 text-custom3" href="" onClick={handlePushApto}>
                                         <span>Apartamentos</span>
                                     </Link>
                                 </div>
@@ -35,7 +47,7 @@ export default function FixedButton() {
                             <div className="row">
                                 <div className="col-3"><i><HiOutlineBookOpen /></i></div>
                                 <div className="col-9">
-                                    <Link className="fs-5 text-custom3" href="/search?var=books">
+                                    <Link className="fs-5 text-custom3" href="" onClick={handlePushBook}>
                                         <span>Livros</span>
                                     </Link>
                                 </div>

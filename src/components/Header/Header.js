@@ -56,9 +56,14 @@ function CustomNavBar({ children, logged }) {
                     </li>
                     {
                         logged ?
-                            <li className={`${styles.customNavItem}`}>
-                                <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/posts">posts</Link>
-                            </li>
+                            <>
+                                <li className={`${styles.customNavItem}`}>
+                                    <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/dashboard">dashboard</Link>
+                                </li>
+                                <li className={`${styles.customNavItem}`}>
+                                    <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/posts">posts</Link>
+                                </li>
+                            </>
                             : <></>
                     }
                     {
@@ -102,9 +107,15 @@ function OffcanvasExample({ children, logged }) {
                                 </li>
                                 {
                                     logged ?
-                                        <li className={`${styles.customNavItem}`}>
-                                            <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/posts">posts</Link>
-                                        </li>
+                                        <>
+                                            <li className={`${styles.customNavItem}`}>
+                                                <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/dashboard">dashboard</Link>
+                                            </li>
+                                            <li className={`${styles.customNavItem}`}>
+                                                <Link className={`fw-semibold fs-5 text-uppercase text-custom1 ${roboto.className}`} href="/posts">posts</Link>
+                                            </li>
+                                        </>
+
                                         : <></>
                                 }
                                 {

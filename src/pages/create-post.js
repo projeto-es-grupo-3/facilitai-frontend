@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
@@ -9,9 +9,8 @@ import Footer from '@/components/Footer/Footer';
 import Polygon from '@/components/Polygon/Polygon';
 import CreatePostForm from '@/components/CreatePostForm/CreatePostForm';
 import UserTab from '@/components/UserTab/UserTab';
-
-// @contents
 import CreatePostContent from '@/contents/CreatePostContent';
+import FixedButton from '@/components/FixedButton/FixedButton';
 
 // @contexts
 import { AuthContext } from "@/contexts/AuthContext";
@@ -35,39 +34,56 @@ export default function CreatePost() {
 
     const HandleLogOut = async () => {
         const res = await fetch(`${process.env.BACK_END_HOST}/logout`, {
-          method: "DELETE",
-          headers: {
-            "Authentication": `Bearer {${localStorage.getItem("token")}}`,
-          },
+            method: "DELETE",
+            headers: {
+                "Authentication": `Bearer ${localStorage.getItem("token")}`,
+            },
         })
         res.json().then(() => {
-          authContext.setAuthState({
-            token: null,
-            user: null
-          });
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
+            authContext.setAuthState({
+                token: null,
+                user: null
+            });
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
         })
         router.push("/login")
-    
     }
 
     const SubmitPost = async (data) => {
         
-        const res = await fetch(`${process.env.BACK_END_HOST}/create_ad`, {
+        let image;
+        if (data.image) {
+            image = data.image
+        }
+        console.log(data);
+
+        const res = await fetch(`${process.env.BACK_END_HOST}/create-ad`, {
             method: "POST",
             headers: {
-                "Authentication": `Bearer {${localStorage.getItem("token")}}`,
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data.post)
         })
-       res.json().then((data) => {
-        return data.access_token
-        }).then((token) => {
-            authContext.setAuthState({token,user})
-        })
-       
+        if(data.image) {
+            res.json().then(async (data) => {
+                console.log(data);
+                const imageData = new FormData();
+                imageData.append("ad_id", data.ad_id);
+                if (data.image) {
+                    imageData.append("ad_img", image);
+                }
+                
+                const res = await fetch(`${process.env.BACK_END_HOST}/upload-image`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                    },
+                    body: imageData
+                })
+            })
+        }
         router.push("/dashboard")
     }
 
@@ -83,8 +99,9 @@ export default function CreatePost() {
                 <UserTab name={authContext.authState.user} image={null} HandleLogOut={HandleLogOut} />
             </Header>
             <CreatePostContent>
-                <CreatePostForm SubmitPost={SubmitPost}/>
+                <CreatePostForm SubmitPost={SubmitPost} />
             </CreatePostContent>
+            <FixedButton/>
             <Footer />
         </>
     )

@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import styles from '@/components/CreatePostForm/CreatePostForm.module.css';
 
-const ImageUploader = ({ onImageSelect, selectedImage }) => {
+export default  function ImageUploader({ onImageSelect, selectedImage, setFile }){
   const fileInputRef = useRef(null);
   const handleButtonClick = () => {
     fileInputRef.current.click();
@@ -10,14 +10,15 @@ const ImageUploader = ({ onImageSelect, selectedImage }) => {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setFile(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         onImageSelect(reader.result);
       };
       reader.readAsDataURL(file);
     }
+    
   };
-  
   return (
     <div className={`row ${styles.imgSelect}`}>
       <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleImageChange} />
@@ -30,17 +31,3 @@ const ImageUploader = ({ onImageSelect, selectedImage }) => {
     </div>
   );
 };
-
-const ParentComponent = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleImageSelect = (image) => {
-    setSelectedImage(image);
-  };
-
-  return (
-      <ImageUploader selectedImage={selectedImage} onImageSelect={handleImageSelect} />
-  );
-};
-
-export default ParentComponent;

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 // @components
 import Header from '@/components/Header/Header';
@@ -19,8 +19,9 @@ import DashboardContent from '@/contents/DashboardContent';
 import { AuthContext } from "@/contexts/AuthContext";
 
 export default function Dashboard() {
+  const [posts, setPosts] = useState();
   const authContext = useContext(AuthContext);
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     if (localStorage.getItem("token") != undefined && localStorage.getItem("user") != undefined) {
@@ -33,6 +34,51 @@ export default function Dashboard() {
     if (!authContext.isUserAuthenticated()) {
       router.push("/login")
     }
+    const GetPosts = async () => {
+      var raw;
+      var retorno;
+      raw  = JSON.stringify({
+        "endereco": null,
+        "valor_min": null,
+        "valor_max": null,
+        "num_comodos": null
+      }); 
+      
+
+      let res = await fetch(`${process.env.BACK_END_HOST}/search-apartments`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Authentication": `Bearer ${localStorage.getItem("token")}`,
+          },
+          body:raw
+      })
+
+      var data = await res.json();
+      var reversed = [...data].reverse();
+      retorno = reversed
+      raw  = JSON.stringify({
+        "nome_livro": null,
+        "nome_autor": null,
+        "genero": null,
+        "preco_min": null,
+        "preco_max": null
+      });  
+
+      res = await fetch(`${process.env.BACK_END_HOST}/search-books`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authentication": `Bearer ${localStorage.getItem("token")}`,
+        },
+        body:raw
+      })
+    data = await res.json();
+    reversed = [...data].reverse();
+    retorno.concat(reversed);
+    setPosts(retorno)
+  }
+  GetPosts()
   }, [])
 
   const HandleLogOut = async () => {
@@ -68,10 +114,16 @@ export default function Dashboard() {
       <DashboardContent>
         <Category />
         <LastPosts>
-          <PostType
-            textButton={"Procurando alguém para dividir apartamento no endereço"}
-            category={"books"}
-          />
+        {
+                    posts?.filter((item, idx) => idx < 3).map((c, index) =>(
+                      <PostType
+                      key={index}
+                      textButton={c.descricao}
+                      category={"other"}
+                    />
+                    ))
+        }
+          
         </LastPosts>
       </DashboardContent>
       <FixedButton/>
