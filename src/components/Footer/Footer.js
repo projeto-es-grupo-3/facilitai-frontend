@@ -21,7 +21,8 @@ export default function Footer() {
                             Facilitaí Eng. de Software LTDA.
                         </h2>
                         <p className={`text-custom1 text-start mt-4 ${roboto.className}`}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            Facilitando a vida acadêmica dos alunos da UFCG: conexões eficientes para venda de livros, empréstimos, aluguel de apartamentos e 
+                            colaboração mútua. Simplifique, conecte-se e aproveite ao máximo sua jornada universitária com o Facilitaí.
                         </p>
                     </div>
                     <div className="col-12 col-md-6  mt-3 d-flex flex-column">

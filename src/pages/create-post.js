@@ -68,14 +68,12 @@ export default function CreatePost() {
         })
         if(data.image) {
             res.json().then(async (data) => {
-                console.log(data);
+
                 const imageData = new FormData();
                 imageData.append("ad_id", data.ad_id);
-                if (data.image) {
-                    imageData.append("ad_img", image);
-                }
+                imageData.append("ad_img", image);
                 
-                const res = await fetch(`${process.env.BACK_END_HOST}/upload-image`, {
+                await fetch(`${process.env.BACK_END_HOST}/upload-image`, {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -84,7 +82,7 @@ export default function CreatePost() {
                 })
             })
         }
-        router.push("/dashboard")
+        // router.push("/dashboard")
     }
 
     return (

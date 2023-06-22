@@ -8,7 +8,6 @@ import livro from '../../../public/images/livro.png';
 import predio from '../../../public/images/predio.png';
 import galeria from '../../../public/images/galeria.png';
 import perfil from '../../../public/images/perfil.png';
-
 import { SiGmail } from 'react-icons/si';
 import { IoLogoWhatsapp } from 'react-icons/io';
 
@@ -24,14 +23,14 @@ export default function Post ({category, data}) {
 
     if (category === "search-apartments") {
         post = {
-            "Preço: ": rest.preco,
+            "Preço: R$ ": rest.preco+".0",
             "Endereço: ": rest.endereco,
             "Área(m²): ": rest.area,
             "Número de Quartos: ":rest.comodos
         }
     } else if (category === "search-books") {
         post = {
-            "Preço: ": rest.preco,
+            "Preço: R$ ": rest.preco+".0",
             "Titulo Livro: ": rest.titulo_livro,
             "Autor: ": rest.autor,
             "Genêro: ": rest.genero,
@@ -41,11 +40,13 @@ export default function Post ({category, data}) {
 
     const elements = Object.entries(post);
 
+    console.log(rest.image_location);
+
     return (
         <div className={`row bg-custom1 rounded mt-4 text-custom3 ${styles.postCard}`}>
             <div className="col-12 col-md-4">
                 <div className="row">
-                    <Image className={`rounded-start ${styles.imgPost}`} alt="" src={galeria}/>
+                    <Image className={`rounded-start ${styles.imgPost}`} alt="" width={100} height={100} src={ rest.image_location !="/image/None"? `/images${rest.image_location}`: galeria}/>
                 </div>
             </div>
             <div className="col-12 col-md-6">

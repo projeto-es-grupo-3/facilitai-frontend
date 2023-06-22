@@ -59,6 +59,7 @@ export default function Posts() {
                 body:raw
             })
             const data = await res.json();
+            console.log(data);
             const reversed = [...data].reverse(); 
             setPosts(reversed)
         }
